@@ -4,6 +4,8 @@
 
 package com.mycompany.hms;
 
+import Database.UserAdd_DB;
+
 /**
  *
  * @author Reo
@@ -11,6 +13,10 @@ package com.mycompany.hms;
 public class HMS {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        UserAdd_DB add = new UserAdd_DB();
+        
+        add.addUser("Reo", "Redoy", "rwarieal@gmail.com", "2005", "01311720456");
+        
+        
     }
 }
