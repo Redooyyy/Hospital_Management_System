@@ -1,3 +1,5 @@
+Database/DoctorAdd_DB.class
 Database/UserAdd_DB.class
+Database/GetFrom_DB.class
 com/mycompany/hms/HMS.class
 Database/DB_connect.class

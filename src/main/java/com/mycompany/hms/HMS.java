@@ -4,6 +4,7 @@
 
 package com.mycompany.hms;
 
+import Database.GetFrom_DB;
 import Database.UserAdd_DB;
 
 /**
@@ -17,6 +18,7 @@ public class HMS {
         
         add.addUser("Reo", "Redoy", "rwarieal@gmail.com", "2005", "01311720456");
         
+        System.out.println(GetFrom_DB.geting_user_id("Reo"));
         
     }
 }
