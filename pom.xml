@@ -5,12 +5,39 @@
     <artifactId>HMS</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
+        
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21</version>
+            <classifier>linux</classifier>
+        </dependency>
+        
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
           <version>8.0.33</version>
-        </dependency>
+          </dependency>
+          
+          
     </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- JavaFX Maven Plugin -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <!-- If your main class is in src/main/java/com/yourapp/Main.java -->
+                    <mainClass>com.yourapp.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
