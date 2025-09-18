@@ -30,8 +30,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <!-- If your main class is in src/main/java/com/yourapp/Main.java -->
-                    <mainClass>com.yourapp.Main</mainClass>
+                    <mainClass>com.mycompany.hms.HMS</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -42,6 +41,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>com.mycompany.hms.HMS</exec.mainClass>
     </properties>
 </project>
+
+<!-- I have a some idea about sql also learn javafx a little bit!! but face a lot of truble to add dependepncies for sql and javafx so I took a little help from Ai to config my pom.xml file -_- -->
