@@ -10,7 +10,9 @@ import Database.UserAdd_DB;
 /**
  *
  * @author Reo
- */
+ **/
+//checking remote updating
+
 public class HMS {
 
     public static void main(String[] args) {
