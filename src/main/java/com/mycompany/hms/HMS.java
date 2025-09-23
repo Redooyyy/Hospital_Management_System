@@ -17,10 +17,11 @@ public class HMS {
 
     public static void main(String[] args) {
         UserAdd_DB add = new UserAdd_DB();
+        //dummy data for debuging
+        add.addUser("Redoy", "rwarieal@gmail.com", "2005", "01311720456");
+        add.addUser("Rayan Ahmed", "rayan@gmail.com", "1234", "01346582145");
         
-        add.addUser("Reo", "Redoy", "rwarieal@gmail.com", "2005", "01311720456");
-        
-        System.out.println(GetFrom_DB.geting_user_id("Reo"));
+        System.out.println(GetFrom_DB.geting_user_id("rayan"));
         
     }
 }

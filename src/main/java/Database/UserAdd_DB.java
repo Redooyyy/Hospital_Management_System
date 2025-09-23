@@ -4,6 +4,7 @@
  */
 package Database;
 
+import Core_logics.Username;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -30,11 +31,11 @@ public class UserAdd_DB {
     
     
     
-   public void addUser(String username,String full_name, String email,String password,String number){
+   public void addUser(String full_name, String email,String password,String number){
       
       String sql = "INSERT INTO users (username, password, full_name, email, phone, role_id) VALUES (?, ?, ?, ?, ?, ?)";
        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, username);
+            statement.setString(1, Username.uniq_user_name(email));
             statement.setString(2, password);
             statement.setString(3, full_name);
             statement.setString(4, email);
@@ -43,7 +44,7 @@ public class UserAdd_DB {
             statement.executeUpdate();
             
             System.out.println("User added successfully"); // for debug purpose
-       } catch (Exception e) {
+       } catch (SQLException e) {
            e.printStackTrace();
        }
    }
