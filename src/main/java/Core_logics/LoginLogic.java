@@ -10,5 +10,8 @@ package Core_logics;
  * @author Rasel
  */
 public class LoginLogic {
+LoginLogic(){
+    
+}
     
 }
