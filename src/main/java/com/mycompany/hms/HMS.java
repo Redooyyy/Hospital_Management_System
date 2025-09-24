@@ -19,9 +19,10 @@ public class HMS {
         UserAdd_DB add = new UserAdd_DB();
         //dummy data for debuging
         
-        int a = GetFrom_DB.getUserID("rwarieal");
+        int a = GetFrom_DB.getUserID("rayan");
         System.out.println(a);
         System.out.println(GetFrom_DB.getRoleID(a));
+        System.out.println(GetFrom_DB.getPasswordByEmail("rwarieal@gmail.com"));
         
     }
 }
