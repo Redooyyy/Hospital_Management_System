@@ -1,6 +1,7 @@
 Database/UserAdd_DB.class
 Roles/All_roles.class
 UI/Login_page.class
+Database/Pass_me_query.class
 Database/DoctorAdd_DB.class
 Core_logics/Username.class
 UI/ExecuteUI.class
