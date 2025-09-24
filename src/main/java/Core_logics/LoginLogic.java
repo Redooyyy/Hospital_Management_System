@@ -10,7 +10,9 @@ package Core_logics;
  * @author Rasel
  */
 public class LoginLogic {
-LoginLogic(){
+    String name;
+LoginLogic(String a){
+    name=a;
     
 }
     
