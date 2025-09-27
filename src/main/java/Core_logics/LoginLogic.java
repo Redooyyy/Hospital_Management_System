@@ -7,23 +7,25 @@ package Core_logics;
 
 import Database.GetFrom_DB;
 
+import java.util.Objects;
+
 /**
  *
  * @author Rasel
  */
 public class LoginLogic {
-    boolean loggedInUsername(String username,String password){
+    public boolean loggedInUsername(String username,String password){
         
         GetFrom_DB pass1=new GetFrom_DB();
-        if(pass1.getPasswordByUsername(username)==password){
+        if(Objects.equals(pass1.getPasswordByUsername(username), password)){
         return true;
-        }else
+        } else
         return false;
     
     }
-    boolean loggedInEmail(String email,String password){
+    public boolean loggedInEmail(String email,String password){
         GetFrom_DB pass2=new GetFrom_DB();
-    if(pass2.getPasswordByEmail(email)==password){
+    if(Objects.equals(pass2.getPasswordByEmail(email), password)){
     return true;
     }else
     return false;

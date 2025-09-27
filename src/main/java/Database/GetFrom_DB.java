@@ -12,6 +12,11 @@ public class GetFrom_DB {
     }
     
     //get role_id
+    //admin_id -> 1
+    //usr->2
+    //doctor ->3
+    //receptionist ->4
+    //pharmacist ->5 (optional)
     public static int getRoleID(int user_id){
     Pass_me_query query = new Pass_me_query("role_id", "users", "user_id");
     return query.returnInt(user_id);
@@ -23,7 +28,7 @@ public class GetFrom_DB {
         return query.returnString(username);
     }
     
-    //get password(emmail)
+    //get password(email)
     public static String getPasswordByEmail(String email){    
         Pass_me_query query = new Pass_me_query("password", "users", "email");
         return query.returnString(email);
