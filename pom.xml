@@ -5,23 +5,32 @@
     <artifactId>HMS</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        
+
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>21</version>
-            <classifier>linux</classifier>
+            <version>21.0.1</version>
         </dependency>
-        
+
+
         <dependency>
-          <groupId>mysql</groupId>
-          <artifactId>mysql-connector-java</artifactId>
-          <version>8.0.33</version>
-          </dependency>
-          
-          
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21.0.1</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+
     </dependencies>
-    
+
     <build>
         <plugins>
             <!-- JavaFX Maven Plugin -->
@@ -36,7 +45,7 @@
         </plugins>
     </build>
 
-    
+
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,4 +53,4 @@
     </properties>
 </project>
 
-<!-- I have a some idea about sql also learn javafx a little bit!! but face a lot of truble to add dependepncies for sql and javafx so I took a little help from Ai to config my pom.xml file -_- -->
+        <!-- I have a some idea about sql also learn javafx a little bit!! but face a lot of truble to add dependepncies for sql and javafx so I took a little help from Ai to config my pom.xml file -_- -->

@@ -1,3 +1,4 @@
+/home/Reo/Reo/HMS/src/main/java/Core_logics/LoginLogic.java
 /home/Reo/Reo/HMS/src/main/java/Core_logics/Username.java
 /home/Reo/Reo/HMS/src/main/java/Database/DB_connect.java
 /home/Reo/Reo/HMS/src/main/java/Database/DoctorAdd_DB.java
@@ -5,6 +6,5 @@
 /home/Reo/Reo/HMS/src/main/java/Database/Pass_me_query.java
 /home/Reo/Reo/HMS/src/main/java/Database/UserAdd_DB.java
 /home/Reo/Reo/HMS/src/main/java/Roles/All_roles.java
-/home/Reo/Reo/HMS/src/main/java/UI/ExecuteUI.java
-/home/Reo/Reo/HMS/src/main/java/UI/Login_page.java
 /home/Reo/Reo/HMS/src/main/java/com/mycompany/hms/HMS.java
+/home/Reo/Reo/HMS/src/main/java/com/mycompany/hms/LoginUI_controller.java

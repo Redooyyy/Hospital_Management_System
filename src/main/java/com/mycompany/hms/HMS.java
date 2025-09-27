@@ -4,8 +4,13 @@
 
 package com.mycompany.hms;
 
-import Database.GetFrom_DB;
-import Database.UserAdd_DB;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.util.Objects;
 
 /**
  *
@@ -13,16 +18,18 @@ import Database.UserAdd_DB;
  **/
 //checking remote updating
 
-public class HMS {
+public class HMS extends Application{
 
     public static void main(String[] args) {
-        UserAdd_DB add = new UserAdd_DB();
-        //dummy data for debuging
-        
-        int a = GetFrom_DB.getUserID("rayan");
-        System.out.println(a);
-        System.out.println(GetFrom_DB.getRoleID(a));
-        System.out.println(GetFrom_DB.getPasswordByEmail("rwarieal@gmail.com"));
-        
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+            //Group root = new Group();
+        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/LoginUI.fxml")));
+        Scene scene = new Scene(root1);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

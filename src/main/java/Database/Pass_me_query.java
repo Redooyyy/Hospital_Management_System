@@ -22,7 +22,7 @@ public class Pass_me_query {
         //syntax example = "SELECT role_id FROM users WHERE user_id = ?";
         this.query = "SELECT " + target + " FROM " + whichTable + " WHERE " + whichRow + " = ?";
     }
-              
+
         
         //for userID,role_ID,doctorID,patientID(by passing a string)
        public int returnInt(int anyID){
