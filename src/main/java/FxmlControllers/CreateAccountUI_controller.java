@@ -205,9 +205,11 @@ public class CreateAccountUI_controller implements Initializable {
         }
         if(getPassword1Field().length() < 7){
             errorLabel.setText("Password must be more than 7 characters");
+            return false;
         }
         if(getPassword1Field().length() > 15){
-            errorLabel.setText("Password must not be more than 15 characters");
+            errorLabel.setText("Password must be less than 15 characters");
+            return  false;
         }
         //User exist in database or not
         if(!Objects.equals(getPassword1Field(), getPassword2Field())){
