@@ -31,9 +31,9 @@ public class UserAdd_DB {
     
     
     
-   public void addUser(String full_name, String email,String password,String number){
+   public void addUser(String full_name, String email,String password,String number, String gender){
       
-      String sql = "INSERT INTO users (username, password, full_name, email, phone, role_id) VALUES (?, ?, ?, ?, ?, ?)";
+      String sql = "INSERT INTO users (username, password, full_name, email, phone, role_id, gender) VALUES (?, ?, ?, ?, ?, ?, ?)";
        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, Username.uniq_user_name(email));
             statement.setString(2, password);
@@ -41,6 +41,7 @@ public class UserAdd_DB {
             statement.setString(4, email);
             statement.setString(5, number);
             statement.setInt(6, this.role_id);
+            statement.setString(7,gender);
             statement.executeUpdate();
             
             System.out.println("User added successfully"); // for debug purpose

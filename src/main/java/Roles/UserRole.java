@@ -15,7 +15,7 @@ public enum UserRole {
     Pharmacist(5),
     Receptionist(4);
 
-    private int role_id;
+    private final int role_id;
     UserRole(int role_id){
         this.role_id=role_id;
     }
