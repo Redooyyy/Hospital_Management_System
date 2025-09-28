@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="1124.0" style="-fx-background-insets: 1; -fx-background-radius: 10; -fx-background-color: E7EFE7;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.LoginUI_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="1124.0" style="-fx-background-radius: 20; -fx-background-color: E7EFE7;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.LoginUI_controller">
    <children>
-      <AnchorPane layoutX="523.0" layoutY="19.0" prefHeight="569.0" prefWidth="587.0" style="-fx-background-radius: 35; -fx-background-color: EFEFEF;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <AnchorPane layoutX="523.0" layoutY="19.0" prefHeight="569.0" prefWidth="587.0" style="-fx-background-radius: 18; -fx-background-color: EFEFEF;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <ImageView fitHeight="483.0" fitWidth="449.0" layoutX="72.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="71.75460815429688" AnchorPane.topAnchor="33.0">
                <image>
@@ -30,7 +30,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="loginButton" layoutX="181.0" layoutY="360.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="177.0" style="-fx-background-radius: 20;" text="Login" textAlignment="CENTER" AnchorPane.leftAnchor="181.0">
+      <Button layoutX="181.0" layoutY="360.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="177.0" style="-fx-background-radius: 20;" text="Login" textAlignment="CENTER" AnchorPane.leftAnchor="181.0">
          <effect>
             <DropShadow color="#8c8c8c" height="3.13" offsetY="3.0" radius="0.2825" width="0.0">
                
@@ -40,7 +40,7 @@
             <Font name="Roboto Bold" size="17.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="roleDropdown" layoutX="70.0" layoutY="278.0" prefHeight="47.0" prefWidth="400.0" AnchorPane.leftAnchor="70.0" />
+      <ChoiceBox fx:id="roleDropdown" cache="true" layoutX="70.0" layoutY="278.0" prefHeight="47.0" prefWidth="400.0" AnchorPane.leftAnchor="70.0" />
       <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="28.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/user.png" />

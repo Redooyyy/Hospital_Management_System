@@ -29,6 +29,8 @@ public class HMS extends Application{
             //Group root = new Group();
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/LoginUI.fxml")));
         Scene scene = new Scene(root1);
+        //login page can't be resizable
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

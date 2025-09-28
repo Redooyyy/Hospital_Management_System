@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import Core_logics.LoginLogic;
 import Database.GetFrom_DB;
+import Roles.UserRole;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,23 +42,16 @@ public class LoginUI_controller implements Initializable{
         roleDropdown.setStyle("-fx-font-size: 18px;"+"-fx-background-radius: 22px;"); //-_- There wasn't any border radius option in scene builder
     }
 
-    public int getSelectedRole() {
-        String role = roleDropdown.getValue();
-        int role_id = 0;
-        if(Objects.equals(role, "Admin"))role_id=1;
-        else if(Objects.equals(role, "Patient"))role_id=2;
-        else if(Objects.equals(role, "Doctor"))role_id=3;
-        else if (Objects.equals(role, "Receptionist"))role_id=4;
-        else if(Objects.equals(role, "Pharmacist"))role_id=5;
-        return role_id;
+    public String getSelectedRole() {
+        return roleDropdown.getValue();
     }
 
     public void login(ActionEvent e) {
         try {
             LoginLogic loginLogic = new LoginLogic();
             if(Objects.equals(getUserNameTextField(), "") || Objects.equals(getPassTextField(), "")) errorLabel.setText("username/password can not be empty");
-            else if (getSelectedRole() == 0) errorLabel.setText("Role Can not be Empty");
-            else if (loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) && GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == getSelectedRole()) {
+            else if (UserRole.userRoleID(getSelectedRole()) == 0) errorLabel.setText("Please select your role");
+            else if (loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) && GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole())) {
                 System.out.println("Successfully logged in");
                 //role wise windows(Scenes)
             } else {
