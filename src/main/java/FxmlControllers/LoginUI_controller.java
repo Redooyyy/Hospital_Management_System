@@ -60,13 +60,38 @@ public class LoginUI_controller implements Initializable{
             //because after calling that successfully created account methode property of the errorLabel will be change so re-initialized needed :)
             errorLabel.setTextFill(Color.web("#d70909"));
             errorLabel.setStyle("-fx-background-color:  #E7EFE7;"+ "-fx-font-weight: normal");
+
+
             LoginLogic loginLogic = new LoginLogic();
             if(Objects.equals(getUserNameTextField(), "") || Objects.equals(getPassTextField(), "")) errorLabel.setText("username/password can not be empty");
             else if (UserRole.userRoleID(getSelectedRole()) == 0) errorLabel.setText("Please select your role");
-            else if (loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) && GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole())) {
+
+            //probably the most annoying condition I've ever written -_- although it doesn't matter if it works :) ....and it worked  (>_<)
+            else if ((loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) || loginLogic.loggedInEmail(getUserNameTextField(),getPassTextField())) && (GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole())||GetFrom_DB.getRoleID(GetFrom_DB.getUserIDbyEmail(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole()))) {
                 System.out.println("Successfully logged in");
                 //role wise windows(Scenes)
+
+                //switching to interface but before that passing the usernames to UserUI()
+                if(Objects.equals(getSelectedRole(), "Patient")){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/UserUI.fxml"));
+                    Parent root = loader.load();
+                    UserUI_controller controller = loader.getController();
+
+                    //email or username?
+                    if(getUserNameTextField().indexOf('@') == -1){
+                        controller.setFullName(GetFrom_DB.getFullNameByUsername(getUserNameTextField()));
+                        controller.setUsername(getUserNameTextField());
+                    } else {
+                        controller.setFullName(GetFrom_DB.getFullNameByEmail(getUserNameTextField()));
+                        controller.setUsername(GetFrom_DB.getUserNameByEmail(getUserNameTextField()));
+                    }
+                    Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
             } else {
+
                 errorLabel.setText("Invalid username or password");
             }
 
@@ -77,12 +102,8 @@ public class LoginUI_controller implements Initializable{
 
 
     public void createAccountPage(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/CreateAccountUI.fxml"));
-        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene switchScene = new SwitchScene();
+        switchScene.switchscene(e,"/UI/CreateAccountUI.fxml");
     }
 
 

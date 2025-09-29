@@ -123,11 +123,8 @@ public class CreateAccountUI_controller implements Initializable {
     }
 
     public void sign_inPage(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/LoginUI.fxml"));
-        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene switchscene = new SwitchScene();
+        switchscene.switchscene(e,"/UI/LoginUI.fxml");
     }
 
     public void getGender(ActionEvent e){

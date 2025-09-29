@@ -10,7 +10,10 @@ public class GetFrom_DB {
     Pass_me_query query = new Pass_me_query("user_id", "users", "username");
     return query.returnInt(username);
     }
-    
+    public static int getUserIDbyEmail(String email){
+        Pass_me_query query = new Pass_me_query("user_id", "users", "email");
+        return query.returnInt(email);
+    }
     //get role_id
     //admin_id -> 1
     //usr->2
@@ -34,6 +37,17 @@ public class GetFrom_DB {
         return query.returnString(email);
     }
 
-
+   public  static  String getFullNameByEmail(String email){
+        Pass_me_query query = new Pass_me_query("full_name","users","email");
+        return query.returnString(email);
+   }
+    public  static  String getFullNameByUsername(String username){
+        Pass_me_query query = new Pass_me_query("full_name","users","username");
+        return query.returnString(username);
+    }
+    public static  String getUserNameByEmail(String email){
+        Pass_me_query query = new Pass_me_query("username","users","email");
+        return query.returnString(email);
+    }
 
 }
