@@ -28,11 +28,15 @@ public class UserUI_controller implements Initializable {
         this.usernameLabel.setText(username);
     }
 
-    public void overview(ActionEvent e){}
+    public void overview(ActionEvent e) throws IOException {
+        loadingContent("/UI/OverviewUI.fxml");
+    }
 
     public void profile(ActionEvent e){}
 
-    public void notifications(ActionEvent e){}
+    public void notifications(ActionEvent e) throws IOException {
+    loadingContent("/UI/NotificationUI.fxml");
+    }
 
     public void doctors(ActionEvent e){}
 

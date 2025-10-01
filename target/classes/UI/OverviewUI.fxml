@@ -89,7 +89,7 @@
                   </ImageView>
                   <VBox layoutX="14.0" layoutY="118.0" prefHeight="197.0" prefWidth="348.0">
                      <children>
-                        <Label prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
+                        <Label fx:id="notification1" prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
                            <font>
                               <Font name="FreeSans" size="17.0" />
                            </font>
@@ -104,7 +104,7 @@
                               </DropShadow>
                            </effect>
                         </Label>
-                        <Label prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
+                        <Label fx:id="notification2" prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
                            <font>
                               <Font name="FreeSans" size="17.0" />
                            </font>
@@ -119,7 +119,7 @@
                               </DropShadow>
                            </effect>
                         </Label>
-                        <Label prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
+                        <Label fx:id="notification3" prefHeight="49.0" prefWidth="378.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18; -fx-padding: 10;" text="   Label" textFill="WHITE">
                            <font>
                               <Font name="FreeSans" size="17.0" />
                            </font>

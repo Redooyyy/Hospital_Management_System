@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -20,12 +21,23 @@ public class NotificationUI_controller implements Initializable {
     private VBox notificationVbox;
     @FXML
     ScrollPane scrollPane;
+    @FXML
+    Button clearBtn;
+    @FXML
+    private Label noNotifications;
 
     public void setNotification(String mainMessage, String subMassage,int index){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
+        //this for lines are from yt + some research just to stopping from automatic decreasing the height of my notification card while overflow -_-
+        scrollPane.setFitToHeight(false);
+        scrollPane.setFitToWidth(true);
+        notificationVbox.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        notificationVbox.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        //Each Property are tested in scene-builder! after making the ui in scene builder I take note of colors, x y positioning, height and weight etc and implimented here for dynamically creating same notification card when a new notification will appear from database!!
         AnchorPane notificationCard = new AnchorPane();
         notificationCard.setPrefHeight(59);
         notificationCard.setPrefWidth(735);
@@ -72,18 +84,25 @@ public class NotificationUI_controller implements Initializable {
         clear.setPrefWidth(60);
         clear.setLayoutX(633);
         clear.setLayoutY(16);
+        clear.setOnAction(event -> {
+            notificationVbox.getChildren().remove(notificationCard);
+            clearButtonVisible();
+        });
 
         //adding all element to ->anchorPane ->Vbox
         notificationCard.getChildren().addAll(mainNotification,subNotification,clear);
         notificationVbox.getChildren().add(index,notificationCard);
-        VBox.setMargin(notificationCard,new Insets(4,0,13,10));
+        VBox.setMargin(notificationCard,new Insets(4,10,13,10));
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",1);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
+
+        //dummy data for testing scrollable or not
+        setNotification("New announcement ","",0);
+        setNotification("Dr.Nirob Accepted your appointment","Dear, Rayan! sorry for late response!",1);
+        setNotification("Dr.Nirob Accepted your appointment","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",3);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",4);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",5);
@@ -94,4 +113,38 @@ public class NotificationUI_controller implements Initializable {
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",10);
 
     }
+
+    public void clearAll(){
+        notificationVbox.getChildren().clear();
+        clearButtonVisible();
+    }
+
+    //clear button visibility
+    public void clearButtonVisible(){
+        if(notificationVbox.getChildren().isEmpty()){
+            clearBtn.setVisible(false);
+            noNotifications.setText("no notifications");
+        } else {
+            clearBtn.setVisible(true);
+            noNotifications.setText("");
+        }
+    }
+
+    //pass to the overview(only the latest 3 notifications)
+    public String overViewPass(int indx){
+        AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
+        Label mainText = (Label)card.getChildren().getFirst();
+        return mainText.getText();
+    }
+
+    public String first(){
+        return overViewPass(0);
+    }
+    public String second(){
+        return overViewPass(1);
+    }
+    public String third(){
+        return overViewPass(2);
+    }
+
 }
