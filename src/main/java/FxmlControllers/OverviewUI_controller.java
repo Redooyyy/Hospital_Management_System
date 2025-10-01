@@ -1,5 +1,6 @@
 package FxmlControllers;
 
+import Database.GetFrom_DB;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -8,8 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
-import java.util.ResourceBundle;
-
+import java.util.*;
 
 
 public class OverviewUI_controller implements Initializable {
@@ -34,9 +34,15 @@ public class OverviewUI_controller implements Initializable {
    @FXML
     private Label doctor1;
    @FXML
+   private Label doctor1Sub;
+   @FXML
     private Label doctor2;
+    @FXML
+    private Label doctor2Sub;
    @FXML
     private Label doctor3;
+    @FXML
+    private Label doctor3Sub;
    @FXML
     private ImageView doctor1image;
    @FXML
@@ -48,12 +54,35 @@ public class OverviewUI_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setProfileImage(doctor1image,"/assets/doctormale.jpg");
-        setProfileImage(doctor2image,"/assets/doctorfemale.jpg");
-        setProfileImage(doctor3image,"/assets/doctormale.jpg");
+        setProfileImage();
+        setHealthTips();
     }
 
-    public void setProfileImage(ImageView frame, String path){
+    public void setProfileImage(){
+        clipImage(doctor1image,"/assets/doctormale.jpg");
+        clipImage(doctor2image,"/assets/doctorfemale.jpg");
+        clipImage(doctor3image,"/assets/doctormale.jpg");
+    }
+
+    public void setHealthTips(){
+        Random random = new Random();
+        Set<Integer>uniq = new HashSet<>();
+
+        while(uniq.size()<4){
+            uniq.add((random.nextInt(30)+1));  //it'll give me 4 uniq but random numbers between 1-30
+        }
+        //HashSet font use indexing that's why convert into array
+        Integer[] arr = uniq.toArray(new Integer[0]);
+
+        //  \uD83D\uDC9C heart shape copy it from Google
+        healthTips1.setText("  \uD83D\uDC9C  "+GetFrom_DB.getTips(arr[0]));
+        healthTips2.setText("  \uD83D\uDC9C  "+GetFrom_DB.getTips(arr[1]));
+        healthTips3.setText("  \uD83D\uDC9C  "+GetFrom_DB.getTips(arr[2]));
+        healthTips4.setText("  \uD83D\uDC9C  "+GetFrom_DB.getTips(arr[3]));
+    }
+
+    //helper functions
+    public void clipImage(ImageView frame, String path){
         Image maleDoctorImage = new Image(path);
         frame.setImage(maleDoctorImage);
 

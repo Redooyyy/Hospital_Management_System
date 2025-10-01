@@ -36,18 +36,25 @@ public class GetFrom_DB {
         Pass_me_query query = new Pass_me_query("password", "users", "email");
         return query.returnString(email);
     }
-
+    //get fullName by email
    public  static  String getFullNameByEmail(String email){
         Pass_me_query query = new Pass_me_query("full_name","users","email");
         return query.returnString(email);
    }
+   //get fullName by username
     public  static  String getFullNameByUsername(String username){
         Pass_me_query query = new Pass_me_query("full_name","users","username");
         return query.returnString(username);
     }
+    //get username by email
     public static  String getUserNameByEmail(String email){
         Pass_me_query query = new Pass_me_query("username","users","email");
         return query.returnString(email);
+    }
+    //get tips by unique id
+    public static String getTips(int slNum){
+        Pass_me_query query =new Pass_me_query("tips","health_tips","tips_id");
+        return query.returnString(slNum);
     }
 
 }
