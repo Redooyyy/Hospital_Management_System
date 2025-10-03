@@ -115,9 +115,9 @@ public class OverviewUI_controller implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/NotificationUI.fxml"));
         Parent root = loader.load();
         NotificationUI_controller notification = loader.getController();
-        notification1.setText("➤  "+notification.first());
-        notification2.setText("➤  "+notification.second());
-        notification3.setText("➤  "+notification.third());
+        notification1.setText(notification.first());
+        notification2.setText(notification.second());
+        notification3.setText(notification.third());
     }
 }
 

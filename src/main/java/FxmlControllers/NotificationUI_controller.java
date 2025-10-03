@@ -1,5 +1,6 @@
 package FxmlControllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -20,11 +22,17 @@ public class NotificationUI_controller implements Initializable {
     @FXML
     private VBox notificationVbox;
     @FXML
-    ScrollPane scrollPane;
+    private ScrollPane scrollPane;
     @FXML
-    Button clearBtn;
+    private Button clearBtn;
     @FXML
     private Label noNotifications;
+    @FXML
+    private Label defaultNotificationShow;
+    @FXML
+    private Label notificationShow;
+    private AnchorPane selected;
+
 
     public void setNotification(String mainMessage, String subMassage,int index){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
@@ -43,6 +51,14 @@ public class NotificationUI_controller implements Initializable {
         notificationCard.setPrefWidth(735);
         notificationCard.setStyle("-fx-background-color:  #2F4050;" + "-fx-background-radius: 18;");
 
+        notificationCard.setOnMouseClicked(event -> {
+            if(!(event.getTarget() instanceof Button)){
+                selected = (AnchorPane) event.getSource();
+                notificationShow.setText(subMassage);  // I have something in mind finish it later
+                defaultNotificationShow.setText("");
+            }
+        });
+
         DropShadow shadow = new DropShadow();
         shadow.setBlurType(BlurType.THREE_PASS_BOX);
         shadow.setWidth(12.0);
@@ -58,11 +74,11 @@ public class NotificationUI_controller implements Initializable {
                 "-fx-set-fill: white;"+"-fx-font-size: 17;"+"-fx-font-family: FreeSans;"
         );
         mainNotification.setTextFill(Color.WHITE);
-        mainNotification.setPrefWidth(551);
+        mainNotification.setPrefWidth(420);
         mainNotification.prefHeight(27);
         mainNotification.setLayoutX(21);
         mainNotification.setLayoutY(9);
-        mainNotification.setText(mainMessage);
+        mainNotification.setText("➤   "+mainMessage);
 
         //sub notification
         Label subNotification = new Label();
@@ -70,11 +86,22 @@ public class NotificationUI_controller implements Initializable {
         subNotification.setStyle(
                 "-fx-set-fill: #8a7f7f;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"
         );
-        subNotification.setPrefWidth(551);
+        subNotification.setPrefWidth(420);
         subNotification.prefHeight(27);
         subNotification.setLayoutY(32);
         subNotification.setLayoutX(22);
-        subNotification.setText(subMassage);
+        subNotification.setText("        "+subMassage);
+
+        Label timeOfNotification = new Label();
+        timeOfNotification.setTextFill(Color.web("#8a7f7f"));
+        timeOfNotification.setStyle(
+                "-fx-set-fill: #8a7f7f;"+"-fx-font-size: 15;"+"-fx-font-family: FreeSans;"
+        );
+        timeOfNotification.setPrefWidth(98);
+        timeOfNotification.prefHeight(34);
+        timeOfNotification.setLayoutY(22);
+        timeOfNotification.setLayoutX(495);
+        timeOfNotification.setText("1 hour ago"); //for testing
 
         //clear Button
         Button clear = new Button();
@@ -87,10 +114,16 @@ public class NotificationUI_controller implements Initializable {
         clear.setOnAction(event -> {
             notificationVbox.getChildren().remove(notificationCard);
             clearButtonVisible();
+            if(ifSelectedIsDeleted(event)){
+                defaultNotificationShow.setText("no notification is selected");
+                notificationShow.setText("");
+            } else {
+                defaultNotificationShow.setText("");
+            }
         });
 
         //adding all element to ->anchorPane ->Vbox
-        notificationCard.getChildren().addAll(mainNotification,subNotification,clear);
+        notificationCard.getChildren().addAll(mainNotification,subNotification,timeOfNotification,clear);
         notificationVbox.getChildren().add(index,notificationCard);
         VBox.setMargin(notificationCard,new Insets(4,10,13,10));
 
@@ -101,8 +134,8 @@ public class NotificationUI_controller implements Initializable {
 
         //dummy data for testing scrollable or not
         setNotification("New announcement ","",0);
-        setNotification("Dr.Nirob Accepted your appointment","Dear, Rayan! sorry for late response!",1);
-        setNotification("Dr.Nirob Accepted your appointment","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
+        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response!",1);
+        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",3);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",4);
         setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",5);
@@ -114,7 +147,15 @@ public class NotificationUI_controller implements Initializable {
 
     }
 
+    public void selectedCard(MouseEvent event){
+        AnchorPane selcted = new AnchorPane();
+        int indx = notificationVbox.getChildren().indexOf(selcted);
+        notificationShow.setText(subtext(indx));
+    }
+
     public void clearAll(){
+        notificationShow.setText("");
+        defaultNotificationShow.setText("no notification is selected");
         notificationVbox.getChildren().clear();
         clearButtonVisible();
     }
@@ -124,16 +165,31 @@ public class NotificationUI_controller implements Initializable {
         if(notificationVbox.getChildren().isEmpty()){
             clearBtn.setVisible(false);
             noNotifications.setText("no notifications");
+            defaultNotificationShow.setText("no notification is selected");
         } else {
             clearBtn.setVisible(true);
-            noNotifications.setText("");
         }
+    }
+
+    public boolean ifSelectedIsDeleted(ActionEvent event){
+        Button clicked = (Button)event.getSource();
+        AnchorPane pane = (AnchorPane) clicked.getParent();
+        int indx = notificationVbox.getChildren().indexOf(pane);
+        int indx2 = notificationVbox.getChildren().indexOf(selected);
+
+        return indx == indx2;
+
     }
 
     //pass to the overview(only the latest 3 notifications)
     public String overViewPass(int indx){
         AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
         Label mainText = (Label)card.getChildren().getFirst();
+        return mainText.getText();
+    }
+    public String subtext(int indx){
+        AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
+        Label mainText = (Label)card.getChildren().get(2);
         return mainText.getText();
     }
 

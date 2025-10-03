@@ -34,27 +34,22 @@
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="1.0" layoutY="271.0" mnemonicParsing="false" onAction="#profile" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Profile" textFill="#e0e0e0">
+      <Button layoutY="265.0" mnemonicParsing="false" onAction="#notifications" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Notifications" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutY="335.0" mnemonicParsing="false" onAction="#notifications" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Notifications" textFill="#e0e0e0">
+      <Button layoutX="1.0" layoutY="323.0" mnemonicParsing="false" onAction="#doctors" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Doctors" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="1.0" layoutY="399.0" mnemonicParsing="false" onAction="#doctors" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Doctors" textFill="#e0e0e0">
+      <Button layoutY="381.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Appointments" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutY="463.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Appointments" textFill="#e0e0e0">
-         <font>
-            <Font name="FreeSans" size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="-1.0" layoutY="528.0" mnemonicParsing="false" onAction="#settings" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Settings" textFill="#e0e0e0">
+      <Button layoutX="-1.0" layoutY="439.0" mnemonicParsing="false" onAction="#settings" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Settings" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>

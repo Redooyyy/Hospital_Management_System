@@ -16,12 +16,12 @@
          <children>
             <AnchorPane layoutX="752.0" layoutY="102.0" prefHeight="622.0" prefWidth="413.0" style="-fx-background-color: #2A3A4B; -fx-background-radius: 18;">
                <children>
-                  <Label fx:id="notificationShow" alignment="TOP_LEFT" layoutX="18.0" layoutY="57.0" prefHeight="494.0" prefWidth="381.0" textFill="WHITE">
+                  <Label fx:id="notificationShow" alignment="TOP_LEFT" layoutX="7.0" layoutY="51.0" prefHeight="562.0" prefWidth="398.0" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="FreeSans" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="defaultNotificationShow" alignment="CENTER" layoutX="160.0" layoutY="268.0" prefHeight="34.0" prefWidth="98.0" text="no notification is selected" textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
+                  <Label fx:id="defaultNotificationShow" alignment="CENTER" layoutX="160.0" layoutY="301.0" prefHeight="34.0" prefWidth="98.0" text="no notification is selected" textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
                      <font>
                         <Font name="FreeSans" size="14.0" />
                      </font>
@@ -31,7 +31,7 @@
                         <Font name="FreeSans" size="18.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="2.0" layoutY="38.0" prefHeight="4.0" prefWidth="406.0" />
+                  <Separator layoutX="3.0" layoutY="38.0" prefHeight="4.0" prefWidth="406.0" />
                </children>
                <effect>
                   <DropShadow height="11.63" radius="5.407500000000001" width="12.0">

@@ -95,9 +95,10 @@ public class CreateAccountUI_controller implements Initializable {
     public void sign_up(ActionEvent e) throws IOException {
             if(exceptionsPassed()){
                 //add all info to database
-//                UserAdd_DB add = new UserAdd_DB();
-//                String fullName = getFirstNameField() + " " + getLastNameField();
-//                add.addUser(fullName,getEmailField(),getPassword1Field(),getPhoneNumberField(),getSelectedGender().getText());
+                UserAdd_DB add = new UserAdd_DB();
+                String fullName = getFirstNameField() + " " + getLastNameField();
+                add.addUser(fullName,getEmailField(),getPassword1Field(),getPhoneNumberField(),getSelectedGender().getText());
+
                 System.out.println("SIGNED UP");
 
                 FXMLLoader load = new FXMLLoader(getClass().getResource("/UI/LoginUI.fxml"));
@@ -145,7 +146,7 @@ public class CreateAccountUI_controller implements Initializable {
             return false;
         }
         for(int i =0;i<getFirstNameField().length();i++){
-            if(getFirstNameField().toLowerCase().charAt(i) < 'a' || getFirstNameField().toLowerCase().charAt(i) > 'z' ){
+            if((getFirstNameField().toLowerCase().charAt(i) < 'a' || getFirstNameField().toLowerCase().charAt(i) > 'z') && getFirstNameField().charAt(i) != ' '){
                 errorLabel.setText("Name can not contains number or special characters");
             } else {
                 continue;
@@ -172,7 +173,10 @@ public class CreateAccountUI_controller implements Initializable {
             return false;
         }
         //still many exception, but we'll add those logic later for valid email
-        if(getEmailField().indexOf('@') == -1 && !Objects.equals(getEmailField(), "")) {
+        int indx = getEmailField().lastIndexOf('@');
+        String domain = getEmailField().substring(indx+1);
+        String local = getEmailField().substring(0,indx);
+        if(!domain.equals("gmail.com") || local.indexOf('@')!=-1 || local.length()>4) {
             errorLabel.setText("Invalid email address");
             return false;
         }
