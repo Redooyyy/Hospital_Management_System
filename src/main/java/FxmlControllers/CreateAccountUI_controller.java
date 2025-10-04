@@ -154,7 +154,7 @@ public class CreateAccountUI_controller implements Initializable {
             return false;
         }
         for(int i =0; i < getLastNameField().length(); i++){
-            if(getLastNameField().toLowerCase().charAt(i) < 'a' || getLastNameField().toLowerCase().charAt(i) > 'z' ){
+            if((getLastNameField().toLowerCase().charAt(i) < 'a' || getLastNameField().toLowerCase().charAt(i) > 'z') && getLastNameField().charAt(i)!= ' '){
                 errorLabel.setText("Name can not contains number or special characters");
             } else {
                 continue;
@@ -176,7 +176,7 @@ public class CreateAccountUI_controller implements Initializable {
         int indx = getEmailField().lastIndexOf('@');
         String domain = getEmailField().substring(indx+1);
         String local = getEmailField().substring(0,indx);
-        if(!domain.equals("gmail.com") || local.indexOf('@')!=-1 || local.length()>4) {
+        if(!domain.equals("gmail.com") || local.indexOf('@')!=-1) {
             errorLabel.setText("Invalid email address");
             return false;
         }
