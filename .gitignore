@@ -1,1 +1,27 @@
+# Build output
 target/
+out/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+/shelf/
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/dictionaries/
+/.idea/httpRequests/
+/.idea/dataSources/
+/.idea/dataSources.ids
+/.idea/dataSources.local.xml
+
+# NetBeans
+nbproject/private/
+dist/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
