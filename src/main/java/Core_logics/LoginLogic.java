@@ -6,7 +6,6 @@
 package Core_logics;
 
 import Database.GetFrom_DB;
-import Database.Pass_me_query;
 
 import java.util.Objects;
 
