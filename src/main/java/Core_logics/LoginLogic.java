@@ -6,6 +6,7 @@
 package Core_logics;
 
 import Database.GetFrom_DB;
+import Database.Pass_me_query;
 
 import java.util.Objects;
 
@@ -30,7 +31,27 @@ public class LoginLogic {
     }else
     return false;
     }
+
+    public boolean checkRoleUsername(String username ,int role){
+        GetFrom_DB roleid=new GetFrom_DB();
+        if(Objects.equals(roleid.getRoleID(roleid.getUserID(username)), roleid)){
+            return true;
+        } else{
+           return false;
+        }
     
+    }
+
+    public boolean checkEmail(String email,int role){
+        GetFrom_DB dbrole= new GetFrom_DB();
+        if(Objects.equals(dbrole.getRoleID(dbrole.getUserIDbyEmail(email)),role)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+       
 }
+
     
 
