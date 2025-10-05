@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BlurType;
@@ -30,6 +31,26 @@ public class DoctorsUI_controller implements Initializable {
     private Label defaultOverview;
     @FXML
     private Label notificationShow;
+    @FXML
+    private Label overviewName;
+    @FXML
+    private Label overviewAge;
+    @FXML
+    private Label overviewGender;
+    @FXML
+    private Label overviewSpeciality;
+    @FXML
+    private Label overviewExperience;
+    @FXML
+    private Label overviewContact;
+    @FXML
+    private VBox overviewField;
+    @FXML
+    private ImageView overViewImage;
+    @FXML
+    private Button rate;
+    @FXML
+    private Hyperlink askAppointment;
     private AnchorPane selected;
 
 
@@ -99,17 +120,19 @@ public class DoctorsUI_controller implements Initializable {
         timeOfNotification.setText("✮ 4.5"); //for testing
 
         //clear Button
-        Button clear = new Button();
-        clear.setText("View");
-        clear.setStyle("-fx-background-color: green;"+"-fx-background-radius: 18;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"+"-fx-text-fill: white;"+"-fx-font-weight: bold");
-        clear.setPrefHeight(30);
-        clear.setPrefWidth(60);
-        clear.setLayoutX(633);
-        clear.setLayoutY(18);
+        Button view = new Button();
+        view.setText("View");
+        view.setStyle("-fx-background-color: green;"+"-fx-background-radius: 18;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"+"-fx-text-fill: white;"+"-fx-font-weight: bold");
+        view.setPrefHeight(30);
+        view.setPrefWidth(60);
+        view.setLayoutX(633);
+        view.setLayoutY(18);
+        view.setOnAction(event -> viewDetail());
+
 
 
         //adding all element to ->anchorPane ->Vbox
-        notificationCard.getChildren().addAll(imageView,mainNotification,timeOfNotification,clear);
+        notificationCard.getChildren().addAll(imageView,mainNotification,timeOfNotification,view);
         doctorsVbox.getChildren().add(index,notificationCard);
         VBox.setMargin(notificationCard,new Insets(4,10,13,10));
 
@@ -117,7 +140,8 @@ public class DoctorsUI_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-            setDoctor("Dr. Fayed Hasan","",0);
+        setDoctor("Dr. Fayed Hasan","",0);
+        defauilt();
     }
 
 
@@ -133,4 +157,29 @@ public class DoctorsUI_controller implements Initializable {
         frame.setClip(clip);
     }
 
+    public void viewDetail(){//for testing
+        active();
+        clipImage(overViewImage,"/assets/doctormale.jpg",100); //based on gender
+        //for testing
+        overviewName.setText(":     "+"Fayed Hasan Nirob");
+        overviewAge.setText(":     "+"22");
+        overviewContact.setText(":     "+"01311720456");
+        overviewExperience.setText(":     "+"2 yrs");
+        overviewGender.setText(":     "+"Male");
+        overviewSpeciality.setText(":     "+"Cardiology");
     }
+
+    public void defauilt(){
+        defaultOverview.setText("no profile is selected");
+        overviewField.setVisible(false);
+        rate.setVisible(false);
+        askAppointment.setVisible(false);
+    }
+
+    public void active(){
+        defaultOverview.setText("");
+        overviewField.setVisible(true);
+        rate.setVisible(true);
+        askAppointment.setVisible(true);
+    }
+}

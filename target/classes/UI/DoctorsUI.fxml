@@ -19,38 +19,38 @@
             <children>
                 <AnchorPane layoutX="752.0" layoutY="102.0" prefHeight="622.0" prefWidth="413.0" style="-fx-background-color: #2A3A4B; -fx-background-radius: 18;">
                     <children>
-                        <Label alignment="CENTER" layoutX="160.0" layoutY="6.0" prefHeight="27.0" prefWidth="98.0" style="-fx-font-weight: bold;" text="Overview " textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
+                        <Label alignment="CENTER" layoutX="160.0" layoutY="6.0" prefHeight="27.0" prefWidth="98.0" style="-fx-font-weight: bold;" text="View" textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
                             <font>
                                 <Font name="FreeSans" size="18.0" />
                             </font>
                         </Label>
                         <Separator layoutX="3.0" layoutY="38.0" prefHeight="4.0" prefWidth="406.0" />
-                  <Button layoutX="48.0" layoutY="549.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 14; -fx-background-color: gold;" text=" ⚝ Rate ⚝" textFill="#060707">
+                  <Button fx:id="rate" layoutX="48.0" layoutY="549.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 14; -fx-background-color: gold;" text=" ⚝ Rate ⚝" textFill="#060707">
                      <font>
                         <Font name="FreeSans Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Hyperlink layoutX="233.0" layoutY="559.0" style="-fx-font-family: FreeSans;" text="Ask for appointment" underline="true">
+                  <Hyperlink fx:id="askAppointment" layoutX="233.0" layoutY="559.0" style="-fx-font-family: FreeSans;" text="Ask for appointment" underline="true">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
                   <ImageView fx:id="overViewImage" fitHeight="100.0" fitWidth="100.0" layoutX="155.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="defaultOverview" alignment="CENTER" layoutX="157.0" layoutY="291.0" prefHeight="34.0" prefWidth="98.0" textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
+                        <Label fx:id="defaultOverview" alignment="CENTER" layoutX="157.0" layoutY="291.0" prefHeight="50.0" prefWidth="98.0" textAlignment="CENTER" textFill="#8a7f7f" wrapText="true">
                             <font>
                                 <Font name="FreeSans" size="14.0" />
                             </font>
                         </Label>
-                  <VBox layoutX="12.0" layoutY="167.0" prefHeight="314.0" prefWidth="395.0">
+                  <VBox fx:id="overviewField" layoutX="12.0" layoutY="167.0" prefHeight="345.0" prefWidth="395.0" style="visibility: false;">
                      <children>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Name" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="  Name" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="overviewName" prefHeight="50.0" prefWidth="267.0" text="  Name" textFill="WHITE">
+                              <Label fx:id="overviewName" prefHeight="50.0" prefWidth="280.0" text="  Name" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -59,7 +59,7 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Age" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="  Age" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -73,7 +73,7 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Gender" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="  Gender" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -87,21 +87,7 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Speciality" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="overviewSpeciality" prefHeight="50.0" prefWidth="267.0" text="  Name" textFill="WHITE">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="50.0" prefWidth="395.0">
-                           <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Experience" textFill="WHITE">
+                              <Label prefHeight="50.0" prefWidth="108.0" text="  Experience" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -115,12 +101,26 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="128.0" text="  Contact" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="  Contact" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="overviewContact" prefHeight="50.0" prefWidth="267.0" text="  Name" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="395.0">
+                           <children>
+                              <Label prefHeight="67.0" prefWidth="108.0" text="  Speciality" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="overviewSpeciality" prefHeight="50.0" prefWidth="278.0" text="  Name" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
