@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
+//just to save streak in github -_-
 package com.mycompany.hms;
 
 import javafx.application.Application;
