@@ -117,7 +117,11 @@ public class OverviewUI_controller implements Initializable {
         NotificationUI_controller notification = loader.getController();
         notification1.setText(notification.first());
         notification2.setText(notification.second());
-        notification3.setText(notification.third());
+        if (notification.third() != null) {
+            notification3.setText(notification.third());
+        } else {
+            notification3.setText("");
+        }
     }
 }
 

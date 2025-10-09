@@ -135,15 +135,15 @@ public class NotificationUI_controller implements Initializable {
         //dummy data for testing scrollable or not
         setNotification("New announcement ","",0);
         setNotification("Dr.Nirob Accepted your appointment","Sorry for late response!",1);
-        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",3);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",4);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",5);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",6);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",7);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",8);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",9);
-        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",10);
+//        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",3);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",4);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",5);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",6);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",7);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",8);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",9);
+//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",10);
 
     }
 
@@ -183,9 +183,13 @@ public class NotificationUI_controller implements Initializable {
 
     //pass to the overview(only the latest 3 notifications)
     public String overViewPass(int indx){
-        AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
-        Label mainText = (Label)card.getChildren().getFirst();
-        return mainText.getText();
+       try{
+           AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
+           Label mainText = (Label)card.getChildren().getFirst();
+           return mainText.getText();
+       } catch (Exception e){
+           return null;
+       }
     }
     public String subtext(int indx){
         AnchorPane card = (AnchorPane) notificationVbox.getChildren().get(indx);
@@ -194,13 +198,13 @@ public class NotificationUI_controller implements Initializable {
     }
 
     public String first(){
-        return overViewPass(0);
+        return overViewPass(0) != null? overViewPass(0):null;
     }
     public String second(){
-        return overViewPass(1);
+        return overViewPass(1) != null? overViewPass(1):null;
     }
     public String third(){
-        return overViewPass(2);
+        return overViewPass(2) != null? overViewPass(2):null;
     }
 
 }
