@@ -42,7 +42,9 @@ public class UserUI_controller implements Initializable {
         loadingContent("/UI/DoctorsUI.fxml");
     }
 
-    public void appointments(ActionEvent e){}
+    public void appointments(ActionEvent e) throws IOException {
+        loadingContent("/UI/AppointmentUI.fxml");
+    }
 
     public void settings(ActionEvent e){}
 

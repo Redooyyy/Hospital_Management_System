@@ -1,5 +1,6 @@
 package FxmlControllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AppointmentUI_controller implements Initializable {
@@ -145,17 +147,17 @@ public class AppointmentUI_controller implements Initializable {
     }
 
 
-    public void confirmed() throws IOException {
+    public void confirmed(ActionEvent e) throws IOException {
         loadingContent("/UI/ConfirmAppointmentListUI.fxml");
     }
 
-    public void requested() throws IOException {
+    public void requested(ActionEvent e) throws IOException {
         loadingContent("/UI/RequestedAppointmentUI.fxml");
     }
 
     public void loadingContent(String fxmlPath) throws IOException {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlPath));
+            AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
             contentBox.getChildren().clear();
             contentBox.getChildren().add(pane);
 
