@@ -149,7 +149,8 @@ public class AppointmentUI_controller implements Initializable {
         loadingContent("/UI/ConfirmAppointmentListUI.fxml");
     }
 
-    public void requested() {
+    public void requested() throws IOException {
+        loadingContent("/UI/RequestedAppointmentUI.fxml");
     }
 
     public void loadingContent(String fxmlPath) throws IOException {
