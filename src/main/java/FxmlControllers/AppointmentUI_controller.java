@@ -1,12 +1,10 @@
 package FxmlControllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BlurType;
@@ -31,6 +29,11 @@ public class AppointmentUI_controller implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private AnchorPane contentBox;
+    @FXML
+    private AnchorPane confirmRequestedButtons;
+    @FXML
+    private Label fillUpMessage;
+    public static AppointmentUI_controller appointmentUIController; //for assigning the current controller
 
 
     public void setDoctor(String mainMessage, String subMassage, int index) {
@@ -110,17 +113,26 @@ public class AppointmentUI_controller implements Initializable {
         timeOfNotification.setText("✮ 4.5"); //for testing
 
         //clear Button
-        Button view = new Button();
-        view.setText("Appointment");
-        view.setStyle("-fx-background-color: green;" + "-fx-background-radius: 18;" + "-fx-font-size: 14;" + "-fx-font-family: FreeSans;" + "-fx-text-fill: white;" + "-fx-font-weight: bold");
-        view.setPrefHeight(37);
-        view.setPrefWidth(120);
-        view.setLayoutX(455);
-        view.setLayoutY(14);
+        Button appointment = new Button();
+        appointment.setText("Appointment");
+        appointment.setStyle("-fx-background-color: green;" + "-fx-background-radius: 18;" + "-fx-font-size: 14;" + "-fx-font-family: FreeSans;" + "-fx-text-fill: white;" + "-fx-font-weight: bold");
+        appointment.setPrefHeight(37);
+        appointment.setPrefWidth(120);
+        appointment.setLayoutX(455);
+        appointment.setLayoutY(14);
+
+        appointment.setOnAction(event -> {
+            try {
+                openedRq();
+                loadingContent("/UI/AppointmentRequestFormUI.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
 
         //adding all element to ->anchorPane ->Vbox
-        notificationCard.getChildren().addAll(imageView, mainNotification, speciality, timeOfNotification, view);
+        notificationCard.getChildren().addAll(imageView, mainNotification, speciality, timeOfNotification, appointment);
         doctorsVbox.getChildren().add(index, notificationCard);
         VBox.setMargin(notificationCard, new Insets(4, 10, 13, 10));
 
@@ -128,9 +140,14 @@ public class AppointmentUI_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bydefault();
+        try {
+            confirmed();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        appointmentUIController = this; //keeping the current controller(what a hustle -_-)
         setDoctor("Dr. Fayed Hasan", "Cardiology", 0);
-
-
     }
 
 
@@ -147,11 +164,11 @@ public class AppointmentUI_controller implements Initializable {
     }
 
 
-    public void confirmed(ActionEvent e) throws IOException {
+    public void confirmed() throws IOException {
         loadingContent("/UI/ConfirmAppointmentListUI.fxml");
     }
 
-    public void requested(ActionEvent e) throws IOException {
+    public void requested() throws IOException {
         loadingContent("/UI/RequestedAppointmentUI.fxml");
     }
 
@@ -169,5 +186,14 @@ public class AppointmentUI_controller implements Initializable {
             e1.printStackTrace();
         }
 
+    }
+
+    public void bydefault(){
+        confirmRequestedButtons.setVisible(true);
+        fillUpMessage.setVisible(false);
+    }
+    public void openedRq(){
+        confirmRequestedButtons.setVisible(false);
+        fillUpMessage.setVisible(true);
     }
 }

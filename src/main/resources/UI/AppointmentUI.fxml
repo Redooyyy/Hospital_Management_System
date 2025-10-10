@@ -21,7 +21,7 @@
                                 <Font name="FreeSans" size="14.0" />
                             </font>
                         </Label>
-                  <AnchorPane layoutX="-2.0" prefHeight="50.0" prefWidth="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane fx:id="confirmRequestedButtons" layoutX="-2.0" prefHeight="50.0" prefWidth="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Button layoutY="-1.0" mnemonicParsing="false" onAction="#confirmed" prefHeight="50.0" prefWidth="267.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Confirmed" textFill="#6beb26" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
                            <font>
@@ -42,6 +42,11 @@
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="contentBox" layoutX="97.0" layoutY="63.0" prefHeight="559.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0" />
+                  <Label fx:id="fillUpMessage" alignment="CENTER" layoutX="50.0" layoutY="5.0" prefHeight="50.0" prefWidth="448.0" style="-fx-background-radius: 18;" text="Please Fill-up This Aditional Information" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="FreeSans Bold" size="15.0" />
+                     </font>
+                  </Label>
                     </children>
                     <effect>
                         <DropShadow height="11.63" radius="5.407500000000001" width="12.0">

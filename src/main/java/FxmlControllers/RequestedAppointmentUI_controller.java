@@ -62,13 +62,18 @@ public class RequestedAppointmentUI_controller implements Initializable {
         cancelRequest.setPrefHeight(34);
         cancelRequest.setLayoutX(400);
         cancelRequest.setLayoutY(13);
+        cancelRequest.setOnAction(event -> {
+            confirmedVbox.getChildren().remove(doctorCard);
+
+            //Update DB sent request column
+        });
 
 //        Label timeDate = new Label();
 //        timeDate.setStyle("-fx-font-size: 16;" + "-fx-font-family: FreeSans;");
 //        timeDate.setTextFill(Color.web("#bfbebe"));
 //        timeDate.setPrefWidth(118);
 //        timeDate.prefHeight(50);
-//        timeDate.setLayoutX(380);
+//        timeDate.setLayoutX(380);55n556
 //        timeDate.setLayoutY(19);
 //        //date
 //        timeDate.setText(time);
