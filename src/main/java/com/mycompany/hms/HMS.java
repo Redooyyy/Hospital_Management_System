@@ -32,7 +32,7 @@ public class HMS extends Application{
         Scene scene = new Scene(root1);
         //login page can't be resizable
         //primaryStage.initStyle(StageStyle.TRANSPARENT);
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

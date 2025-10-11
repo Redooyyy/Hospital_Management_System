@@ -46,7 +46,9 @@ public class UserUI_controller implements Initializable {
         loadingContent("/UI/AppointmentUI.fxml");
     }
 
-    public void settings(ActionEvent e){}
+    public void settings(ActionEvent e) throws IOException {
+        loadingContent("/UI/SettingUI.fxml");
+    }
 
     public void logout(ActionEvent e) throws IOException {
         SwitchScene switchScene = new SwitchScene();
