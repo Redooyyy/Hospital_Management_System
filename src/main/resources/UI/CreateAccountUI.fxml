@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -37,10 +38,13 @@
             <Font size="17.0" />
          </font>
       </TextField>
-      <TextField fx:id="phoneNumberField" layoutX="68.0" layoutY="336.0" prefHeight="48.0" prefWidth="459.0" promptText="phone number" style="-fx-font-size: 17; -fx-background-radius: 20; -fx-font-family: roboto;">
+      <TextField fx:id="phoneNumberField" layoutX="187.0" layoutY="336.0" prefHeight="48.0" prefWidth="340.0" promptText="phone number" style="-fx-font-size: 17; -fx-background-radius: 20; -fx-font-family: roboto;">
          <font>
             <Font size="17.0" />
          </font>
+         <padding>
+            <Insets left="80.0" />
+         </padding>
       </TextField>
       <Button layoutX="118.0" layoutY="535.0" mnemonicParsing="false" onAction="#sign_up" prefHeight="47.0" prefWidth="167.0" style="-fx-background-radius: 20; -fx-background-color: #17DF62;" text="SIGN UP" textFill="WHITE">
          <font>
@@ -131,6 +135,12 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+      </Label>
+      <ChoiceBox fx:id="numCode" layoutX="75.0" layoutY="336.0" prefHeight="48.0" prefWidth="112.0" style="-fx-background-radius: 20;" />
+      <Label fx:id="codeNum" layoutX="197.0" layoutY="341.0" prefHeight="40.0" prefWidth="65.0" text="Label">
+         <font>
+            <Font size="17.0" />
+         </font>
       </Label>
    </children>
 </AnchorPane>

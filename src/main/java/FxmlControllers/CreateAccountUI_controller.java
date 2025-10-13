@@ -37,7 +37,39 @@ public class CreateAccountUI_controller implements Initializable {
     private ToggleGroup gender;
     @FXML
     private Label genderLabel;
-    private RadioButton selectedGender;
+    @FXML
+    private ChoiceBox<String>numCode;
+    @FXML
+    private  Label codeNum;
+
+    private final String[] codes ={
+            "AF +93",
+            "AL +355",
+            "DZ +213",
+            "AS +1-684",
+            "AD +376",
+            "AO +244",
+            "AR +54",
+            "AM +374",
+            "AU +61",
+            "AT +43",
+            "AZ +994",
+            "BS +1-242",
+            "BH +973",
+            "BD +880",
+            "BB +1-246",
+            "BY +375",
+            "BE +32",
+            "BZ +501",
+            "BJ +229",
+            "BT +975",
+            "BO +591",
+            "BA +387",
+            "BW +267",
+            "BR +55",
+            "BN +673",
+            "BG +359"
+    };
 
      //getters
     public RadioButton getSelectedGender() {
@@ -90,7 +122,11 @@ public class CreateAccountUI_controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> errorLabel.getParent().requestFocus()); //to avoid default focus while switch scene
+        numCode.getItems().addAll(codes);
+        numCode.setOnAction(this::selectedCode);
     }
+
+
 
     public void sign_up(ActionEvent e) throws IOException {
             if(exceptionsPassed()){
@@ -189,7 +225,8 @@ public class CreateAccountUI_controller implements Initializable {
             return false;
         }
         //valid phone number or not
-        String validNum="+0123456789";
+        String validNum="0123456789";
+
         for(int i =0;i<getPhoneNumberField().length();i++){
             if (getPhoneNumberField().length() < 5){
                 errorLabel.setText("Invalid phone number");
@@ -218,5 +255,11 @@ public class CreateAccountUI_controller implements Initializable {
             return false;
         }
         return true;
+    }
+
+    public void selectedCode(ActionEvent e) {
+        String val=numCode.getValue();
+        String code = val.substring(val.indexOf(" "));
+        codeNum.setText(code);
     }
 }
