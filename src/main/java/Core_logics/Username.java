@@ -6,7 +6,10 @@ package Core_logics;
 public class Username {
     public static String uniq_user_name(String email){
         final int indx = email.lastIndexOf("@");
-        String s = email.substring(0, indx); // gives the username of email(uniq because google already take uniq emails)
-        return s;
+        if(indx == -1){
+            return "";
+        }
+        // gives the username of email(uniq because google already take uniq emails)
+        return email.substring(0, indx);
     }
 }

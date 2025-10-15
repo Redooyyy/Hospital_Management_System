@@ -9,11 +9,11 @@ package Roles;
  * @author Reo
  */
 public enum UserRole {
-    Admin(1),
-    Patient(2),
-    Doctor(3),
-    Pharmacist(5),
-    Receptionist(4);
+    ADMIN(1),
+    PATIENT(2),
+    DOCTOR(3),
+    PHARMACIST(5),
+    RECEPTIONIST(4);
 
     private final int role_id;
     UserRole(int role_id){

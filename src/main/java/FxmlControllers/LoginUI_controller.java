@@ -64,10 +64,10 @@ public class LoginUI_controller implements Initializable{
 
             LoginLogic loginLogic = new LoginLogic();
             if(Objects.equals(getUserNameTextField(), "") || Objects.equals(getPassTextField(), "")) errorLabel.setText("username/password can not be empty");
-            else if (UserRole.userRoleID(getSelectedRole()) == 0) errorLabel.setText("Please select your role");
+            else if (UserRole.userRoleID(getSelectedRole().toUpperCase()) == 0) errorLabel.setText("Please select your role");
 
             //probably the most annoying condition I've ever written -_- although it doesn't matter if it works :) ....and it worked  (>_<)
-            else if ((loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) || loginLogic.loggedInEmail(getUserNameTextField(),getPassTextField())) && (GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole())||GetFrom_DB.getRoleID(GetFrom_DB.getUserIDbyEmail(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole()))) {
+            else if ((loginLogic.loggedInUsername(getUserNameTextField(),getPassTextField()) || loginLogic.loggedInEmail(getUserNameTextField(),getPassTextField())) && (GetFrom_DB.getRoleID(GetFrom_DB.getUserID(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole().toUpperCase())||GetFrom_DB.getRoleID(GetFrom_DB.getUserIDbyEmail(getUserNameTextField())) == UserRole.userRoleID(getSelectedRole().toUpperCase()))) {
                 System.out.println("Successfully logged in");
                 //role wise windows(Scenes)
 
@@ -95,7 +95,10 @@ public class LoginUI_controller implements Initializable{
                 errorLabel.setText("Invalid username or password");
             }
 
-        } catch (Exception e1){
+        } catch (NullPointerException e1){
+            errorLabel.setText("Please select your role");
+        }
+        catch (Exception e1){
             e1.printStackTrace();
         }
     }
