@@ -105,7 +105,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setRole(UserRole role) {
+    void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -188,7 +188,6 @@ public class User {
               //  errorLabel.setText("Invalid phone number");
                 errorText="Invalid phone number";
                 allOK = false;
-                System.out.println("false 1");
                 System.out.println(number);
                 return  false;
             }
@@ -196,7 +195,6 @@ public class User {
                // errorLabel.setText("Invalid phone number");
                 errorText="Invalid phone number";
                 allOK = false;
-                System.out.println("false 2");
                 System.out.println(number);
                 return false ;
             }

@@ -4,6 +4,8 @@
 //just to save streak in github -_-
 package com.mycompany.hms;
 
+import Roles.UserRole;
+import Roles.UserServices;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +29,9 @@ public class HMS extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //debugging
+        UserServices services = new UserServices();
+        services.changeUserRole("rayan",UserRole.PATIENT,"rayan");
             //Group root = new Group();
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/LoginUI.fxml")));
         Scene scene = new Scene(root1);
