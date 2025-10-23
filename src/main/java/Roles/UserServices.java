@@ -13,4 +13,11 @@ public class UserServices {
             System.out.println("Only admin can change the role");
         }
     }
+
+    //salary increase
+    //notification read
+    //payment update
+    //appointment status
+
+
 }

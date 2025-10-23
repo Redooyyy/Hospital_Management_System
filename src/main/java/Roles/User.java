@@ -105,7 +105,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    void setRole(UserRole role) {
+    private void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -128,6 +128,7 @@ public class User {
             allOK = false;
             return false;
         }
+
         for(int i =0;i<firstName.length();i++){
             if((firstName.toLowerCase().charAt(i) < 'a' || firstName.toLowerCase().charAt(i) > 'z') && firstName.charAt(i) != ' '){
                 //errorLabel.setText("Name can not contains number or special characters");
@@ -161,7 +162,13 @@ public class User {
         //still many exception, but we'll add those logic later for valid email
         int indx = email.lastIndexOf('@');
         String domain = email.substring(indx+1);
-        String local = email.substring(0,indx);
+        String local;
+        if(indx != -1){
+            local = email.substring(0,indx);
+        } else {
+            local = email;
+        }
+
         if(!domain.equals("gmail.com") || local.indexOf('@')!=-1) {
            // errorLabel.setText("Invalid email address");
             errorText="Invalid email address";
@@ -230,7 +237,6 @@ public class User {
     public boolean newPassConfirmPass(String pass1,String pass2){
         return Objects.equals(pass1, pass2);
     }
-
 
     public void saveToDataBase(){
         Signed_Up.savedInDB(getFullName(),getPassword(),getNumber(),getGender(),getEmail());
