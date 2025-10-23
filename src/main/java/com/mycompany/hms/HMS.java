@@ -31,7 +31,7 @@ public class HMS extends Application{
     public void start(Stage primaryStage) throws Exception {
         //debugging
         UserServices services = new UserServices();
-        services.changeUserRole("rayan",UserRole.PATIENT,"rayan");
+        services.changeUserRole("rayan",UserRole.ADMIN,"rayan");
             //Group root = new Group();
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/LoginUI.fxml")));
         Scene scene = new Scene(root1);
