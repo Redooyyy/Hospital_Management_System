@@ -1,12 +1,17 @@
 package FxmlControllers.Admin;
 
 import FxmlControllers.SwitchScene;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +32,10 @@ public class AdminUserUI_controller implements Initializable {
 
     public void setUsername(String username) {
         this.usernameLabel.setText(username);
+    }
+
+    public Label getUsernameLabel() {
+        return usernameLabel;
     }
 
     public void overview(ActionEvent e) throws IOException {
@@ -59,28 +68,54 @@ public class AdminUserUI_controller implements Initializable {
 //content part
 @Override
 public void initialize(URL location, ResourceBundle resources) {
+
+    Platform.runLater(() -> {
+        try {
+            passUsername();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    });
+}
+
+    public void passUsername() throws IOException {
+        loadOverviewWithUsername();
+    }
+
+//loading content
+public <T> T loadingContent(String fxmlPath) {
     try {
-        loadingContent("/UI/AdminUI/OverviewUI.fxml");
-    } catch (IOException e) {
-        throw new RuntimeException(e);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        AnchorPane pane = loader.load();
+
+        contentPane.getChildren().clear();
+        contentPane.getChildren().add(pane);
+
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        AnchorPane.setTopAnchor(pane, 0.0);
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+
+        // Return controller so you can use it outside
+        return loader.getController();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
 }
 
 
-    //loading content
-    private void loadingContent (String fxmlPath) throws IOException {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlPath));
-            contentPane.getChildren().clear();
-            contentPane.getChildren().add(pane);
 
-            AnchorPane.setBottomAnchor(pane,0.0);
-            AnchorPane.setTopAnchor(pane,0.0);
-            AnchorPane.setLeftAnchor(pane,0.0);
-            AnchorPane.setRightAnchor(pane,0.0);
-        } catch (Exception e){
-            e.printStackTrace();
+    public void loadOverviewWithUsername() throws IOException {
+        OverviewUI_controller controller = loadingContent("/UI/AdminUI/OverviewUI.fxml");
+        if (controller != null && usernameLabel.getText() != null) {
+            controller.setUsername(usernameLabel.getText());
+            System.out.println(usernameLabel.getText());
         }
     }
+
+
+
 
 }

@@ -1,7 +1,7 @@
 package Roles;
 
 public class Admin extends User{
-    public void changeRole(String adminUsername,String username,UserRole role){
+    public static void changeRole(String adminUsername,String username,UserRole role){
         UserServices services = new UserServices();
         services.changeUserRole(adminUsername,role,username);
     }

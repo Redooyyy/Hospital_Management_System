@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Admin.OverviewUI_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Doctor.OverviewUI_controller">
    <children>
       <AnchorPane prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;">
          <children>
@@ -191,8 +191,8 @@
                   <DropShadow height="11.91" offsetY="4.0" radius="5.4775" width="12.0" />
                </effect>
                <children>
-                  <Button layoutX="72.0" layoutY="54.0" mnemonicParsing="false" onAction="#addAdmin" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addAdminimg" fitHeight="74.0" fitWidth="71.0" layoutX="75.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+                  <Button layoutX="72.0" layoutY="54.0" mnemonicParsing="false" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="74.0" fitWidth="71.0" layoutX="75.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
                      <image>
                         <Image url="@../../assets/adminadd.png" />
                      </image>
@@ -209,8 +209,8 @@
                   <DropShadow height="11.63" offsetY="4.0" radius="5.407500000000001" width="12.0" />
                </effect>
                <children>
-                  <Button layoutX="61.0" layoutY="52.0" mnemonicParsing="false" onAction="#addPharma" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addpharimg" fitHeight="67.0" fitWidth="71.0" layoutX="74.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+                  <Button layoutX="61.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="67.0" fitWidth="71.0" layoutX="74.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
                      <image>
                         <Image url="@../../assets/pharmacistadd.png" />
                      </image>
@@ -227,8 +227,8 @@
                   <DropShadow height="11.63" offsetY="4.0" radius="5.407500000000001" width="12.0" />
                </effect>
                <children>
-                  <Button layoutX="74.0" layoutY="48.0" mnemonicParsing="false" onAction="#addDoctor" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addDoctorimg" fitHeight="74.0" fitWidth="154.0" layoutX="65.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+                  <Button layoutX="74.0" layoutY="48.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="65.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
                      <image>
                         <Image url="@../../assets/doctoradd.png" />
                      </image>
@@ -245,8 +245,8 @@
                   <DropShadow height="11.96" offsetY="4.0" radius="5.49" width="12.0" />
                </effect>
                <children>
-                  <Button layoutX="82.0" layoutY="61.0" mnemonicParsing="false" onAction="#addRecept" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addRecepimg" fitHeight="74.0" fitWidth="154.0" layoutX="65.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+                  <Button layoutX="82.0" layoutY="61.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="65.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
                      <image>
                         <Image url="@../../assets/receptionistadd.png" />
                      </image>

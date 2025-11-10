@@ -16,7 +16,7 @@
             "request": "launch",
             "mainClass": "com.mycompany.hms.HMS",
             "projectName": "HMS",
-            "vmArgs": "--module-path C:/javafx-sdk-25/lib --add-modules javafx.controls,javafx.fxml"
+            //"vmArgs": "--module-path /home/Reo/java/zulu-fx/zulu21.44.17-ca-fx-jdk21.0.8-linux_x64/lib/ --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

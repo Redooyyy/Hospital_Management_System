@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import Core_logics.LoginLogic;
 import Database.GetFrom_DB;
 import FxmlControllers.Admin.AdminUserUI_controller;
+import FxmlControllers.Doctor.DoctorUserUI_controller;
 import Roles.UserRole;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -35,6 +36,7 @@ public class LoginUI_controller implements Initializable{
     private ChoiceBox<String>roleDropdown;
     private final String patient = "/UI/UserUI.fxml";
     private final String admin = "/UI/AdminUI/AdminUserUI.fxml";
+    private final String doctor = "/UI/DoctorUI/DoctorUserUI.fxml";
     private final String[] roles = {"Admin" , "Doctor" , "Receptionist" , "Pharmacist" , "Patient"};
 
     public String getUserNameTextField() {
@@ -108,7 +110,24 @@ public class LoginUI_controller implements Initializable{
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
+                }
+                else if(Objects.equals(getSelectedRole(),"Doctor")){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(doctor));
+                    Parent root = loader.load();
+                    DoctorUserUI_controller controller = loader.getController();
 
+                    //email or username?
+                    if(getUserNameTextField().indexOf('@') == -1){
+                        controller.setFullName(GetFrom_DB.getFullNameByUsername(getUserNameTextField()));
+                        controller.setUsername(getUserNameTextField());
+                    } else {
+                        controller.setFullName(GetFrom_DB.getFullNameByEmail(getUserNameTextField()));
+                        controller.setUsername(GetFrom_DB.getUserNameByEmail(getUserNameTextField()));
+                    }
+                    Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             } else {
 

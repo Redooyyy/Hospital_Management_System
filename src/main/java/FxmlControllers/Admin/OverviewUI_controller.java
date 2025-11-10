@@ -1,16 +1,24 @@
 package FxmlControllers.Admin;
 
 import Database.GetFrom_DB;
+import FxmlControllers.LoginUI_controller;
 import FxmlControllers.NotificationUI_controller;
+import FxmlControllers.SwitchScene;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
@@ -20,55 +28,70 @@ import java.util.Set;
 
 
 public class OverviewUI_controller implements Initializable {
-   @FXML
-    private Label todaysAppointmentLabel;
-   @FXML
-    private Label upcomingAppointmentLabel;
-   @FXML
-    private Label dueLabel;
-   @FXML
-    private Label entireAmmountLabel;
-   @FXML
-    private  Label clearedAmmountLabel;
-   @FXML
-    private Label healthTips1;
-   @FXML
-    private Label healthTips2;
-   @FXML
-    private Label healthTips3;
-   @FXML
-    private Label healthTips4;
-   @FXML
-    private Label doctor1;
-   @FXML
-   private Label doctor1Sub;
-   @FXML
-    private Label doctor2;
     @FXML
-    private Label doctor2Sub;
-   @FXML
-    private Label doctor3;
-    @FXML
-    private Label doctor3Sub;
-   @FXML
-    private ImageView doctor1image;
-   @FXML
-    private ImageView doctor2image;
-   @FXML
-    private ImageView doctor3image;
-   @FXML
    private Label notification1;
     @FXML
     private Label notification2;
     @FXML
     private Label notification3;
+    @FXML
+    private ImageView addAdminimg;
+    @FXML
+    private ImageView addpharimg;
+    @FXML
+    private ImageView addDoctorimg;
+    @FXML
+    private ImageView addRecepimg;
+    private String username;
+    private String fusername;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-
-//have to add a new table for these in my sql.....I'll finish it soon
+    //have to add a new table for these in my sql.....I'll finish it soon
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        addAdminimg.setOnMouseClicked(e->{
+            try {
+                addAdmin(new ActionEvent(addAdminimg,null));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        addDoctorimg.setOnMouseClicked(e->{
+            try {
+                addDoctor(new ActionEvent(addDoctorimg,null));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        addpharimg.setOnMouseClicked(e->{
+            try {
+                addPharma(new ActionEvent(addpharimg,null));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        addRecepimg.setOnMouseClicked(e->{
+            try {
+                addRecept(new ActionEvent(addRecepimg,null));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+
+
+        Platform.runLater(()->{
+                fusername = username;
+        });
+
         setProfileImage();
         setHealthTips();
         try {
@@ -120,5 +143,54 @@ public class OverviewUI_controller implements Initializable {
             notification3.setText("");
         }
     }
+
+    public void addAdmin(ActionEvent e) throws IOException {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("/UI/AdminUI/RoleChangeUI.fxml"));
+        Parent root = load.load();
+        RoleChnangeUI_controller controller = load.getController();
+        controller.setRole("admin");
+        controller.setUserName(fusername);
+        System.out.println(fusername);
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void addDoctor(ActionEvent e) throws IOException {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("/UI/AdminUI/RoleChangeUI.fxml"));
+        Parent root = load.load();
+        RoleChnangeUI_controller controller = load.getController();
+        controller.setRole("doctor");
+        controller.setUserName(fusername);
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void addPharma(ActionEvent e) throws IOException {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("/UI/AdminUI/RoleChangeUI.fxml"));
+        Parent root = load.load();
+        RoleChnangeUI_controller controller = load.getController();
+        controller.setRole("pharmacist");
+        controller.setUserName(fusername);
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void addRecept(ActionEvent e) throws IOException {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("/UI/AdminUI/RoleChangeUI.fxml"));
+        Parent root = load.load();
+        RoleChnangeUI_controller controller = load.getController();
+        controller.setRole("receptionist");
+        controller.setUserName(fusername);
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow(); //usages current stage rather than creating another
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
 

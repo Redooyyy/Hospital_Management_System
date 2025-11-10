@@ -34,4 +34,11 @@ public enum UserRole {
         }
         return 0;
     }
+
+    public static String roleName(int id){
+        for(UserRole allRole : UserRole.values()){
+            if(allRole.getRole_id() == id) return allRole.toString().toLowerCase();
+        }
+        return null;
+    }
 }
