@@ -11,4 +11,12 @@ public class Update_DB {
         query.update(role.getRole_id(), username);
     }
 
+    public static void updateRQ(boolean accept){
+        //update DB
+    }
+
+    public static void prescription(int doctor,int patient,String note, int medicineID, int quantity2){
+        //update db
+    }
+
 }
