@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Pharmacist.HandOver_controller">
+    <children>
+        <AnchorPane prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;">
+         <children>
+            <AnchorPane layoutX="35.0" layoutY="80.0" prefHeight="550.0" prefWidth="624.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+               <children>
+                  <ListView fx:id="suggesionList" layoutY="124.0" prefHeight="426.0" prefWidth="645.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" />
+                  <TextField fx:id="searchField" layoutX="17.0" layoutY="43.0" prefHeight="41.0" prefWidth="226.0" style="-fx-background-radius: 18;">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <ChoiceBox fx:id="dose" layoutX="277.0" layoutY="44.0" prefHeight="41.0" prefWidth="139.0" style="-fx-background-radius: 18;" />
+                  <ChoiceBox fx:id="day" layoutX="440.0" layoutY="46.0" prefHeight="41.0" prefWidth="82.0" style="-fx-background-radius: 18;" />
+                  <Button layoutX="536.0" layoutY="47.0" mnemonicParsing="false" onAction="#add" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 18; -fx-background-color: green;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="mediError" layoutX="19.0" layoutY="12.0" prefHeight="28.0" prefWidth="226.0" text="Medicine" textFill="#f5f5f5">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="278.0" layoutY="11.0" prefHeight="28.0" prefWidth="98.0" text="Dose per day" textFill="#f5f5f5">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="445.0" layoutY="11.0" prefHeight="28.0" prefWidth="98.0" text="Days" textFill="#f5f5f5">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="usrListNm" layoutX="174.0" layoutY="-15.0" prefHeight="484.0" prefWidth="413.0" style="-fx-background-color: #2F4050; -fx-border-color: transparent; visibility: false;" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="696.0" layoutY="81.0" prefHeight="550.0" prefWidth="464.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+               <children>
+                  <ListView fx:id="medListNm" layoutX="6.0" layoutY="10.0" prefHeight="484.0" prefWidth="177.0" style="-fx-background-color: #2F4050; -fx-border-color: transparent;" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="281.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="145.0" layoutY="502.0" prefHeight="41.0" prefWidth="161.0" text="TOTAL" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="total" layoutX="332.0" layoutY="503.0" prefHeight="41.0" prefWidth="131.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="medListPr" layoutX="315.0" layoutY="10.0" prefHeight="484.0" prefWidth="145.0" style="-fx-background-color: #2F4050;" />
+                  <ListView fx:id="medListQn" layoutX="202.0" layoutY="10.0" prefHeight="484.0" prefWidth="98.0" style="-fx-background-color: #2F4050;" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="211.0" layoutY="656.0" mnemonicParsing="false" onAction="#confirm" prefHeight="56.0" prefWidth="226.0" style="-fx-background-radius: 18; -fx-background-color: GREEN;" text="CONFIRM" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <Button layoutX="717.0" layoutY="661.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="226.0" style="-fx-background-radius: 18; -fx-background-color: RED;" text="CANCEL" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <TextField fx:id="searchFieldP" layoutX="203.0" layoutY="22.0" prefHeight="41.0" prefWidth="226.0" style="-fx-background-radius: 18;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="71.0" layoutY="29.0" prefHeight="28.0" prefWidth="122.0" text="Patient name:" textFill="#f5f5f5">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorText" layoutX="469.0" layoutY="28.0" prefHeight="28.0" prefWidth="360.0" style="visibility: false;" text="Dose per day" textFill="#f5f5f5">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

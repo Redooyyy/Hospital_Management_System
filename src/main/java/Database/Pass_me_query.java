@@ -63,6 +63,23 @@ public class Pass_me_query {
             e.printStackTrace();
         }
         return 0;
+        }
+
+    public double returnDouble(String anyName){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, anyName);
+
+            try(ResultSet result = statement.executeQuery()) {
+                return result.next()?result.getDouble(target) : 0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
        
@@ -120,6 +137,16 @@ public class Pass_me_query {
         try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
             statement.setInt(1,updated);
             statement.setString(2,username);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void update(double updated,int id){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
+            statement.setDouble(1,updated);
+            statement.setInt(2,id);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

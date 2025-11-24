@@ -41,6 +41,11 @@ public class GetFrom_DB {
         Pass_me_query query = new Pass_me_query("full_name","users","email");
         return query.returnString(email);
    }
+
+    public  static  String getUserName(String full_name){
+        Pass_me_query query = new Pass_me_query("username","users","full_name");
+        return query.returnString(full_name);
+    }
    //get fullName by username
     public  static  String getFullNameByUsername(String username){
         Pass_me_query query = new Pass_me_query("full_name","users","username");
@@ -55,6 +60,11 @@ public class GetFrom_DB {
     public static String getTips(int slNum){
         Pass_me_query query =new Pass_me_query("tips","health_tips","tips_id");
         return query.returnString(slNum);
+    }
+
+    public static double getMedPrice(String name){
+        Pass_me_query query= new Pass_me_query("price","medicines","name");
+        return query.returnDouble(name);
     }
 
 }
