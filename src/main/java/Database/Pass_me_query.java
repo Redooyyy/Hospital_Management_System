@@ -153,4 +153,14 @@ public class Pass_me_query {
         }
     }
 
+    void update(String updated,int id){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
+            statement.setInt(1,id);
+            statement.setString(2,updated);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

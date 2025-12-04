@@ -67,4 +67,9 @@ public class GetFrom_DB {
         return query.returnDouble(name);
     }
 
+    public static int getMedStock(String name){
+        Pass_me_query query= new Pass_me_query("stock_quantity","medicines","name");
+        return query.returnInt(name);
+    }
+
 }

@@ -18,6 +18,13 @@ public class Update_DB {
         query.update(cost,userID);
     }
 
+    public static void updateStock(String Medicine, int stock){
+        //update db
+        Pass_me_query query = new Pass_me_query();
+        query.updateDB("medicines","stock_quantity","name");
+        query.update(Medicine,stock);
+    }
+
     public static void updateRQ(boolean accept){
         //update DB
     }

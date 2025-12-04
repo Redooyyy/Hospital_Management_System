@@ -3,6 +3,7 @@ package FxmlControllers.Pharmacist;
 import Database.DB_connect;
 import Database.GetFrom_DB;
 import Database.Update_DB;
+import Roles.Pharmacy.Medicine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HandOver_controller implements Initializable {
@@ -39,8 +41,11 @@ public class HandOver_controller implements Initializable {
     private ChoiceBox<Integer> day;
     @FXML
     private Label total;
+    @FXML
+    Label errorText;
     private double sum;
     private String userName;
+    boolean isAdd = false;
 
 
 
@@ -87,6 +92,8 @@ public class HandOver_controller implements Initializable {
             if (newValue != null) {
                 searchFieldP.setText(newValue.substring(0,newValue.indexOf(" ")));
                 usrListNm.setVisible(false);
+                userName = newValue.substring(newValue.lastIndexOf(" ")+1);
+                System.out.println(userName);
             }
         });
 
@@ -121,8 +128,7 @@ public class HandOver_controller implements Initializable {
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 String full_name = rs.getString("full_name");
-                userName = GetFrom_DB.getUserName(full_name);
-                results.add( full_name+"                  username : "+userName);
+                results.add( full_name+"                  username : "+GetFrom_DB.getUserName(full_name));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -131,7 +137,9 @@ public class HandOver_controller implements Initializable {
     }
 
     public void add(){
-        if(searchField.getText() != null){
+        if(Objects.equals(searchField.getText(), "")) errorText.setText("Please enter medicine name");
+        else if(dose.getValue() == null || day.getValue() == null) errorText.setText("please select day and dose");
+       else if(searchField.getText() != null){
             medListNm.getItems().add(searchField.getText());
             medListQn.getItems().add(dose.getValue() * day.getValue());
             double pricePerMed = dose.getValue()*day.getValue()* GetFrom_DB.getMedPrice(searchField.getText());
@@ -140,11 +148,39 @@ public class HandOver_controller implements Initializable {
             sum+= dose.getValue()*day.getValue()* GetFrom_DB.getMedPrice(searchField.getText());
             String formatedSum = String.format("%.3f",sum);
             total.setText(formatedSum+" Tk");
+            isAdd = true;
+        }
+        if(userName == null){
+            errorText.setText("Please select a Patient");
         }
     }
 
+    //updated db
     public void confirm(){
-        Update_DB.updateBill(userName,sum);
+        if(userName == null) errorText.setText("Please select a Patient");
+        if(!isAdd) errorText.setText("please add medicine to the list");
+         else {
+            Update_DB.updateBill(userName,sum);
+            int x = medListNm.getItems().size();
+            for(int i = 0;i<x;i++){
+                if(Medicine.removeFromStock(medListNm.getItems().get(i),medListQn.getItems().get(i))){
+                    System.out.println("all Okay");
+                } else {
+                    errorText.setText("Medicine is out of stock");
+                }
+            }
+        }
+    }
+
+    public void cancel(){
+        errorText.setText("");
+        searchField.setText("");
+        searchFieldP.setText("");
+        day.getSelectionModel().clearSelection();
+        dose.getSelectionModel().clearSelection();
+        medListNm.getItems().clear();
+        medListQn.getItems().clear();
+        medListPr.getItems().clear();
     }
 
 }

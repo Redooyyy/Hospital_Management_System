@@ -66,11 +66,16 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Button>
-            <Button layoutX="717.0" layoutY="661.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="226.0" style="-fx-background-radius: 18; -fx-background-color: RED;" text="CANCEL" textFill="WHITE">
+            <Button layoutX="717.0" layoutY="661.0" mnemonicParsing="false" onAction="#cancel" prefHeight="56.0" prefWidth="226.0" style="-fx-background-radius: 18; -fx-background-color: RED;" text="CANCEL" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </Button>
+            <Label fx:id="errorText" cacheShape="false" layoutX="471.0" layoutY="20.0" prefHeight="41.0" prefWidth="436.0" textFill="#ff0101">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <TextField fx:id="searchFieldP" layoutX="203.0" layoutY="22.0" prefHeight="41.0" prefWidth="226.0" style="-fx-background-radius: 18;">
          <font>
@@ -82,7 +87,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="errorText" layoutX="469.0" layoutY="28.0" prefHeight="28.0" prefWidth="360.0" style="visibility: false;" text="Dose per day" textFill="#f5f5f5">
+      <Label layoutX="469.0" layoutY="28.0" prefHeight="28.0" prefWidth="360.0" style="visibility: false;" text="Dose per day" textFill="#f5f5f5">
          <font>
             <Font size="15.0" />
          </font>
