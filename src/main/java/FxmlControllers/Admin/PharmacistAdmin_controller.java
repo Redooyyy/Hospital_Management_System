@@ -39,4 +39,11 @@ public class PharmacistAdmin_controller {
         loadingContent("/UI/Pharmacist/HandOverUI.fxml");
     }
 
+    public void checkStocks(){
+        loadingContent("/UI/Pharmacist/SeeStacksUI.fxml");
+    }
+
+    public void addMed(){
+        loadingContent("/UI/Pharmacist/AddMedicine.fxml");
+    }
 }

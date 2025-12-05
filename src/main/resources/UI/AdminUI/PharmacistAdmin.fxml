@@ -15,17 +15,17 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="243.0" mnemonicParsing="false" prefHeight="628.0" prefWidth="184.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="CheckStock" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
+                  <Button layoutX="243.0" mnemonicParsing="false" onAction="#checkStocks" prefHeight="628.0" prefWidth="184.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="CheckStock" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="470.0" layoutY="1.0" mnemonicParsing="false" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Add Medicine" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
+                  <Button layoutX="470.0" layoutY="1.0" mnemonicParsing="false" onAction="#addMed" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Add Medicine" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="687.0" layoutY="1.0" mnemonicParsing="false" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Check Sell" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
+                  <Button layoutX="687.0" layoutY="1.0" mnemonicParsing="false" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

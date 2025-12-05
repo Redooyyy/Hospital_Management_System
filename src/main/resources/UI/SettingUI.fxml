@@ -8,45 +8,65 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.SettingUI_controller">
    <children>
       <VBox layoutX="245.0" layoutY="111.0" prefHeight="502.0" prefWidth="474.0">
          <children>
-            <TextField fx:id="fullName" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+            <TextField fx:id="fullName" prefHeight="52.0" prefWidth="474.0" style="-fx-background-radius: 18;">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <TextField fx:id="mobile" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+            <TextField fx:id="mobile" prefHeight="52.0" prefWidth="474.0" style="-fx-background-radius: 18;">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <TextField fx:id="email" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+            <Label fx:id="email" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: white; -fx-background-radius: 18;">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+            </Label>
+            <TextField fx:id="gender" prefHeight="52.0" prefWidth="474.0" style="-fx-background-radius: 18;">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <TextField fx:id="gender" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+            <Label fx:id="accountCreatedDate" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: white; -fx-background-radius: 18;">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+            </Label>
+            <TextField fx:id="newPass" prefHeight="52.0" prefWidth="474.0" style="-fx-background-radius: 18;">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <TextField fx:id="accountCreatedDate" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
+            <TextField fx:id="confirmPass" prefHeight="52.0" prefWidth="474.0" style="-fx-background-radius: 18;">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </TextField>
-            <TextField fx:id="newPass" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="confirmPass" prefHeight="52.0" prefWidth="474.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
          </children>
       </VBox>
@@ -110,15 +130,20 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="245.0" layoutY="631.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="144.0" style="-fx-font-weight: bold; -fx-font-family: FreeSans; -fx-background-color: red; -fx-background-radius: 18;" text="Cancel" textFill="#f8f8f8">
+      <Button layoutX="245.0" layoutY="631.0" mnemonicParsing="false" onAction="#cancel" prefHeight="45.0" prefWidth="144.0" style="-fx-font-weight: bold; -fx-font-family: FreeSans; -fx-background-color: red; -fx-background-radius: 18;" text="Cancel" textFill="#f8f8f8">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="575.0" layoutY="631.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="144.0" style="-fx-font-weight: bold; -fx-font-family: FreeSans; -fx-background-color: green; -fx-background-radius: 18;" text="Save changes" textFill="#f8f8f8">
+      <Button layoutX="575.0" layoutY="631.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="45.0" prefWidth="144.0" style="-fx-font-weight: bold; -fx-font-family: FreeSans; -fx-background-color: green; -fx-background-radius: 18;" text="Save changes" textFill="#f8f8f8">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
+      <Label fx:id="userName" layoutX="774.0" layoutY="111.0" prefHeight="52.0" prefWidth="242.0" style="-fx-background-color: white; -fx-background-radius: 18;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

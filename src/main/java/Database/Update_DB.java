@@ -55,6 +55,29 @@ public class Update_DB {
         //update db
     }
 
+    //update password
+    public static void updatePass(String username, String pass){
+        Pass_me_query query = new Pass_me_query();
+        query.updateDBDate("password","users","username");
+        query.update(pass,username);
+    }
+    //update mobile-number
+    public static void updateMobileNumber(String username, String number){
+        Pass_me_query query = new Pass_me_query();
+        query.updateDBDate("phone","users","username");
+        query.update(number,username);
+    }
+    //update fullname
+    public static void updateFullName(String name,String username){
+        Pass_me_query query = new Pass_me_query();
+        query.updateDBDate("full_name","users","username");
+        query.update(name,username);
+    }
 
+    public static void updateSallary(double salary,String username){
+        Pass_me_query query = new Pass_me_query();
+        query.updateDBDate("amount","salaries","user_id");
+        query.update(username,salary);
+    }
 
 }

@@ -1,5 +1,6 @@
 package FxmlControllers.Pharmacist;
 
+import FxmlControllers.SettingUI_controller;
 import FxmlControllers.SwitchScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class PharmacistUserUI_controller implements Initializable {
     }
 
     public void settings(ActionEvent e) throws IOException {
-        loadingContent("/UI/SettingUI.fxml");
+        loadingContent("/UI/SettingUI.fxml", usernameLabel.getText());
     }
 
     public void logout(ActionEvent e) throws IOException {
@@ -93,5 +94,32 @@ public class PharmacistUserUI_controller implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void loadingContent(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+            // ✅ Get controller and pass username
+            Object controller = loader.getController();
+            if (controller instanceof SettingUI_controller) {
+                ((SettingUI_controller) controller).setUsername(username);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
+
+}
 

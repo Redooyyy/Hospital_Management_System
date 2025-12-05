@@ -1,6 +1,8 @@
 package FxmlControllers;
 
 
+import Database.AddRequest;
+import Database.GetFrom_DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +25,16 @@ public class AppointmentRequestFormUI_controller implements Initializable {
     private ChoiceBox<String>bloodGroupChoicebox;
     @FXML
     private DatePicker datepicker;
+    private String username;
+    private String docUser;
+
+    public void setDocUser(String docUser) {
+        this.docUser = docUser;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     private final String[] bloodGroup = {"A(+ve)","A(-ve)","B(+ve)","B(-ve)","AB(+ve)","AB(-ve)","O(+ve)","O(-ve)" };
 
@@ -31,6 +43,7 @@ public class AppointmentRequestFormUI_controller implements Initializable {
         AppointmentUI_controller.appointmentUIController.confirmed();
 
         //add to DB (update request column)
+        AddRequest.addAppointmentRequest(GetFrom_DB.getUserID(username),GetFrom_DB.getUserID(docUser));
     }
 
     public void cancelBtn() throws IOException {

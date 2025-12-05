@@ -197,25 +197,7 @@
                         <Image url="@../../assets/adminadd.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="68.0" layoutY="88.0" prefHeight="42.0" prefWidth="71.0" text="Add Admin" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="44.0" layoutY="211.0" prefHeight="134.0" prefWidth="203.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.63" offsetY="4.0" radius="5.407500000000001" width="12.0" />
-               </effect>
-               <children>
-                  <Button layoutX="61.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fitHeight="67.0" fitWidth="71.0" layoutX="74.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/pharmacistadd.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" layoutX="54.0" layoutY="89.0" prefHeight="42.0" prefWidth="91.0" text="Add Pharmacist" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
+                  <Label alignment="CENTER" layoutX="68.0" layoutY="88.0" prefHeight="42.0" prefWidth="71.0" text="See Patient" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
                      <font>
                         <Font name="FreeSans Bold" size="13.0" />
                      </font>
@@ -233,25 +215,7 @@
                         <Image url="@../../assets/doctoradd.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="59.0" layoutY="87.0" prefHeight="42.0" prefWidth="91.0" text="Add Doctor" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="303.0" layoutY="211.0" prefHeight="134.0" prefWidth="203.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.96" offsetY="4.0" radius="5.49" width="12.0" />
-               </effect>
-               <children>
-                  <Button layoutX="82.0" layoutY="61.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="65.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/receptionistadd.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" layoutX="51.0" layoutY="88.0" prefHeight="42.0" prefWidth="91.0" text="Add Receptionist" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="87.0" prefHeight="42.0" prefWidth="91.0" text="See Request" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
                      <font>
                         <Font name="FreeSans Bold" size="13.0" />
                      </font>
@@ -285,115 +249,6 @@
                      </color>
                   </DropShadow>
                </effect></ImageView>
-            <AnchorPane layoutX="12.0" layoutY="119.0" prefHeight="92.0" prefWidth="275.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.25" radius="5.3125" width="12.0">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <children>
-                  <Label layoutX="13.0" layoutY="18.0" prefHeight="27.0" prefWidth="138.0" text="Doctor" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="49.0" prefHeight="27.0" prefWidth="138.0" text="50" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/doctoradd.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <Label alignment="CENTER" layoutY="3.0" prefHeight="74.0" prefWidth="561.0" text="S       T       A       F       F       S" textFill="#fff7f7" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <AnchorPane layoutX="301.0" layoutY="120.0" prefHeight="92.0" prefWidth="275.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.25" radius="5.3125" width="12.0">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <children>
-                  <Label layoutX="13.0" layoutY="18.0" prefHeight="27.0" prefWidth="138.0" text="Patient" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="49.0" prefHeight="27.0" prefWidth="138.0" text="50" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/doctoradd.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="13.0" layoutY="251.0" prefHeight="92.0" prefWidth="275.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.25" radius="5.3125" width="12.0">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <children>
-                  <Label layoutX="13.0" layoutY="18.0" prefHeight="27.0" prefWidth="138.0" text="Pharmacist" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="49.0" prefHeight="27.0" prefWidth="138.0" text="50" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/doctoradd.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="302.0" layoutY="252.0" prefHeight="92.0" prefWidth="275.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
-               <effect>
-                  <DropShadow height="11.25" radius="5.3125" width="12.0">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <children>
-                  <Label layoutX="13.0" layoutY="18.0" prefHeight="27.0" prefWidth="138.0" text="Receptionist" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="49.0" prefHeight="27.0" prefWidth="138.0" text="50" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
-                     <font>
-                        <Font name="FreeSans" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="74.0" fitWidth="154.0" layoutX="185.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
-                     <image>
-                        <Image url="@../../assets/doctoradd.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
          </children></AnchorPane>
    </children>
 </AnchorPane>

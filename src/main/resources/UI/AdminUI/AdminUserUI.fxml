@@ -44,7 +44,7 @@
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutY="381.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Appointments" textFill="#e0e0e0">
+      <Button layoutY="381.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Patients" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>

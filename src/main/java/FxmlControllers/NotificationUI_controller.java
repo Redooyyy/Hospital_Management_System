@@ -1,5 +1,7 @@
 package FxmlControllers;
 
+import Database.DB_connect;
+import Roles.UserRole;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +18,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.sql.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class NotificationUI_controller implements Initializable {
@@ -32,9 +37,15 @@ public class NotificationUI_controller implements Initializable {
     @FXML
     private Label notificationShow;
     private AnchorPane selected;
+    private LocalDateTime now = LocalDateTime.now();
 
+    private int userID;
 
-    public void setNotification(String mainMessage, String subMassage,int index){
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setNotification(String mainMessage, String subMassage, int index,String ago){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -101,7 +112,7 @@ public class NotificationUI_controller implements Initializable {
         timeOfNotification.prefHeight(34);
         timeOfNotification.setLayoutY(22);
         timeOfNotification.setLayoutX(495);
-        timeOfNotification.setText("1 hour ago"); //for testing
+        timeOfNotification.setText(ago+" ago"); //for testing
 
         //clear Button
         Button clear = new Button();
@@ -132,21 +143,39 @@ public class NotificationUI_controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //dummy data for testing scrollable or not
-        setNotification("New announcement ","",0);
-        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response!",1);
-//        setNotification("Dr.Nirob Accepted your appointment","Sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",2);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",3);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",4);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",5);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",6);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",7);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",8);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",9);
-//        setNotification("Dr.Nirob Accepted your appointment request","Dear, Rayan! sorry for late response! We will met at 4:30 in 12 sep!! please don't be late! You will get well soon! not to worry",10);
 
     }
 
+    public void loadData() {
+        String sql = "SELECT notification_title, notification_msg, user_id, notification_time FROM notification";
+
+        try (Connection connection = DB_connect.getConnect();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
+
+            int indx = 0;
+
+            while (rs.next()) {
+                if(rs.getInt("user_id") == userID){
+                    Timestamp timestamp = rs.getTimestamp("notification_time");
+                    LocalDateTime notifyTime = timestamp.toLocalDateTime();
+                    Duration duration = Duration.between(notifyTime,now);
+                    long hours = duration.toHours();
+                    long min = duration.toMinutes()%60;
+                    String ago;
+                    if(hours == 0) ago = ""+min+" min";
+                    else ago = ""+hours+" hour";
+
+                    setNotification(rs.getString("notification_title"),rs.getString("notification_msg"),indx,ago);
+                    indx++;
+                }
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void selectedCard(MouseEvent event){
         AnchorPane selcted = new AnchorPane();
         int indx = notificationVbox.getChildren().indexOf(selcted);

@@ -1,8 +1,9 @@
-package FxmlControllers;
+package FxmlControllers.Doctor;
 
+import Database.AddRequest;
 import Database.DB_connect;
 import Database.GetFrom_DB;
-import Roles.UserRole;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -14,6 +15,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -21,13 +23,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
-public class DoctorsUI_controller implements Initializable {
+public class DoctorAppointment_controller implements Initializable {
     @FXML
     private VBox doctorsVbox;
     @FXML
@@ -59,9 +60,13 @@ public class DoctorsUI_controller implements Initializable {
     @FXML
     private Hyperlink askAppointment;
     private AnchorPane selected;
+    private String username;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public void setDoctor(String mainMessage, String subMassage,int index){
+    public void setDoctor(String mainMessage, String subMassage, int index,String patient){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -115,16 +120,39 @@ public class DoctorsUI_controller implements Initializable {
         imageView.setLayoutY(7);
         clipImage(imageView,"/assets/doctormale.jpg",50);
 
-        Label timeOfNotification = new Label();
-        timeOfNotification.setTextFill(Color.web("#8a7f7f"));
-        timeOfNotification.setStyle(
-                "-fx-set-fill: #8a7f7f;"+"-fx-font-size: 17;"+"-fx-font-family: FreeSans;"+"-fx-font-weight: bold"
-        );
-        timeOfNotification.setPrefWidth(98);
-        timeOfNotification.prefHeight(34);
-        timeOfNotification.setLayoutY(24);
-        timeOfNotification.setLayoutX(495);
-        timeOfNotification.setText("✮ 4.5"); //for testing
+//        Label timeOfNotification = new Label();
+//        timeOfNotification.setTextFill(Color.web("#8a7f7f"));
+//        timeOfNotification.setStyle(
+//                "-fx-set-fill: #8a7f7f;"+"-fx-font-size: 17;"+"-fx-font-family: FreeSans;"+"-fx-font-weight: bold"
+//        );
+//        timeOfNotification.setPrefWidth(98);
+//        timeOfNotification.prefHeight(34);
+//        timeOfNotification.setLayoutY(24);
+//        timeOfNotification.setLayoutX(495);
+//        timeOfNotification.setText("✮ 4.5"); //for testing
+
+        Button accept = new Button();
+        accept.setText("Accept");
+        accept.setStyle("-fx-background-color: green;"+"-fx-background-radius: 18;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"+"-fx-text-fill: white;"+"-fx-font-weight: bold");
+        accept.setPrefHeight(30);
+        accept.setPrefWidth(85);
+        accept.setLayoutX(400);
+        accept.setLayoutY(18);
+        accept.setOnAction(event -> {
+            System.out.println(username);
+            //accept request
+        });
+
+        Button cancel = new Button();
+        cancel.setText("Cancel");
+        cancel.setStyle("-fx-background-color: red;"+"-fx-background-radius: 18;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"+"-fx-text-fill: white;"+"-fx-font-weight: bold");
+        cancel.setPrefHeight(30);
+        cancel.setPrefWidth(85);
+        cancel.setLayoutX(500);
+        cancel.setLayoutY(18);
+        cancel.setOnAction(event -> {
+            //cancel request
+        });
 
         //clear Button
         Button view = new Button();
@@ -139,7 +167,7 @@ public class DoctorsUI_controller implements Initializable {
 
 
         //adding all element to ->anchorPane ->Vbox
-        notificationCard.getChildren().addAll(imageView,mainNotification,timeOfNotification,view);
+        notificationCard.getChildren().addAll(imageView,mainNotification,accept,cancel,view);
         doctorsVbox.getChildren().add(index,notificationCard);
         VBox.setMargin(notificationCard,new Insets(4,10,13,10));
 
@@ -200,7 +228,8 @@ public class DoctorsUI_controller implements Initializable {
 
             while (rs.next()) {
                 if(rs.getInt("role_id") == 3){
-                    setDoctor(rs.getString("full_name"),rs.getString("username"),indx);
+                  //  setDoctor(rs.getString("full_name"),rs.getString("username"),indx);
+                    //see request list
                     indx++;
                 }
             }

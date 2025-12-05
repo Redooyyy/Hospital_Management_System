@@ -1,15 +1,17 @@
-package FxmlControllers;
+package FxmlControllers.Admin;
 
 import Database.DB_connect;
 import Database.GetFrom_DB;
+import Database.SallaryAdd_DB;
+import Database.Update_DB;
+import Roles.Pharmacy.Medicine;
 import Roles.UserRole;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -27,7 +29,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DoctorsUI_controller implements Initializable {
+public class StaffsUI_controller implements Initializable {
     @FXML
     private VBox doctorsVbox;
     @FXML
@@ -57,11 +59,14 @@ public class DoctorsUI_controller implements Initializable {
     @FXML
     private Button rate;
     @FXML
-    private Hyperlink askAppointment;
+    private TextField sallary;
     private AnchorPane selected;
+    private String selectedUser;
+    @FXML
+    private Label sallaryLabel;
 
 
-    public void setDoctor(String mainMessage, String subMassage,int index){
+    public void setDoctor(String mainMessage, String subMassage,int index,String user){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -124,7 +129,7 @@ public class DoctorsUI_controller implements Initializable {
         timeOfNotification.prefHeight(34);
         timeOfNotification.setLayoutY(24);
         timeOfNotification.setLayoutX(495);
-        timeOfNotification.setText("✮ 4.5"); //for testing
+        timeOfNotification.setText(subMassage); //for testing
 
         //clear Button
         Button view = new Button();
@@ -134,7 +139,7 @@ public class DoctorsUI_controller implements Initializable {
         view.setPrefWidth(60);
         view.setLayoutX(633);
         view.setLayoutY(18);
-        view.setOnAction(event -> viewDetail(subMassage));
+        view.setOnAction(event -> viewDetail(user));
 
 
 
@@ -147,6 +152,7 @@ public class DoctorsUI_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+//        setDoctor("Dr. Fayed Hasan","",0);
         loadData();
         defauilt();
     }
@@ -164,29 +170,47 @@ public class DoctorsUI_controller implements Initializable {
         frame.setClip(clip);
     }
 
-    public void viewDetail(String username){//for testing
+    public void viewDetail(String usr){//for testing
         active();
+        selectedUser = usr;
         clipImage(overViewImage,"/assets/doctormale.jpg",100); //based on gender
         //for testing
-        overviewName.setText(":     "+ GetFrom_DB.getFullNameByUsername(username));
-        overviewAge.setText(":     "+GetFrom_DB.getEmailByUsername(username));
-        overviewContact.setText(":     "+GetFrom_DB.getMobileByUsername(username));
-        overviewGender.setText(":     "+GetFrom_DB.getGenderByUsername(username));
+        overviewName.setText(":     "+ GetFrom_DB.getFullNameByUsername(usr));
+        overviewAge.setText(":     "+GetFrom_DB.getEmailByUsername(usr));
+        overviewContact.setText(":     "+GetFrom_DB.getMobileByUsername(usr));
+        overviewExperience.setText(":     "+GetFrom_DB.getSallary(GetFrom_DB.getUserID(usr)));
+        overviewGender.setText(":     "+GetFrom_DB.getGenderByUsername(usr));
+
     }
 
     public void defauilt(){
         defaultOverview.setText("no profile is selected");
         overviewField.setVisible(false);
         rate.setVisible(false);
-        askAppointment.setVisible(false);
     }
 
     public void active(){
         defaultOverview.setText("");
         overviewField.setVisible(true);
+        sallaryLabel.setVisible(true);
+        sallary.setVisible(true);
         rate.setVisible(true);
-        askAppointment.setVisible(true);
+
     }
+
+
+    public void updateSallary(){
+        double x = GetFrom_DB.getSallary(GetFrom_DB.getUserID(selectedUser));
+        if(x == 0){
+            SallaryAdd_DB.addSallary(GetFrom_DB.getUserID(selectedUser),Double.parseDouble(sallary.getText()));
+            overviewExperience.setText(":     "+sallary.getText());
+        } else {
+            Update_DB.updateSallary(Double.parseDouble(sallary.getText()),selectedUser);
+            overviewExperience.setText(":     "+sallary.getText());
+        }
+        sallary.setText("");
+    }
+
 
 
     private void loadData() {
@@ -199,8 +223,8 @@ public class DoctorsUI_controller implements Initializable {
             int indx = 0;
 
             while (rs.next()) {
-                if(rs.getInt("role_id") == 3){
-                    setDoctor(rs.getString("full_name"),rs.getString("username"),indx);
+                if(rs.getInt("role_id") !=2){
+                    setDoctor(rs.getString("full_name"), UserRole.roleName(rs.getInt("role_id")), indx,rs.getString("username"));
                     indx++;
                 }
             }
@@ -210,4 +234,7 @@ public class DoctorsUI_controller implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 }
+

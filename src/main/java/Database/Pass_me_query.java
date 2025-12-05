@@ -96,6 +96,24 @@ public class Pass_me_query {
         return 0;
     }
 
+
+    public double returnDouble(int anyName){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, anyName);
+
+            try(ResultSet result = statement.executeQuery()) {
+                return result.next()?result.getDouble(target) : 0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public double returnDouble(LocalDate date){
         try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query)) {
 

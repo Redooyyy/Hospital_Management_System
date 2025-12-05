@@ -11,7 +11,5 @@ public class Admin extends User{
     //add staffs
     //delete staffs
     //accept buy medicine request from pharmacist
-    public void seeStaffs(){}
-
-
+  //all done via controller
 }

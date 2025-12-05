@@ -1,5 +1,6 @@
 package FxmlControllers;
 
+import Database.DB_connect;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,10 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -33,6 +38,14 @@ public class AppointmentUI_controller implements Initializable {
     private AnchorPane confirmRequestedButtons;
     @FXML
     private Label fillUpMessage;
+
+    private String username;
+    private String doc;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public static AppointmentUI_controller appointmentUIController; //for assigning the current controller
 
 
@@ -124,7 +137,7 @@ public class AppointmentUI_controller implements Initializable {
         appointment.setOnAction(event -> {
             try {
                 openedRq();
-                loadingContent("/UI/AppointmentRequestFormUI.fxml");
+                appoint("/UI/AppointmentRequestFormUI.fxml",username);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -147,7 +160,7 @@ public class AppointmentUI_controller implements Initializable {
             throw new RuntimeException(e);
         }
         appointmentUIController = this; //keeping the current controller(what a hustle -_-)
-        setDoctor("Dr. Fayed Hasan", "Cardiology", 0);
+        loadData();
     }
 
 
@@ -188,6 +201,27 @@ public class AppointmentUI_controller implements Initializable {
 
     }
 
+    private void appoint(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+            AppointmentRequestFormUI_controller controller = loader.getController();
+            controller.setUsername(username);
+            controller.setDocUser(doc);
+
+            contentBox.getChildren().clear();
+            contentBox.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void bydefault(){
         confirmRequestedButtons.setVisible(true);
         fillUpMessage.setVisible(false);
@@ -195,5 +229,29 @@ public class AppointmentUI_controller implements Initializable {
     public void openedRq(){
         confirmRequestedButtons.setVisible(false);
         fillUpMessage.setVisible(true);
+    }
+
+
+    private void loadData() {
+        String sql = "SELECT full_name, username, role_id FROM users";
+
+        try (Connection connection = DB_connect.getConnect();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
+
+            int indx = 0;
+
+            while (rs.next()) {
+                if(rs.getInt("role_id") == 3){
+                    doc = rs.getString("username");
+                    setDoctor(rs.getString("full_name"),doc,indx);
+                    indx++;
+                }
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

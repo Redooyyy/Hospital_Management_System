@@ -1,5 +1,7 @@
 package FxmlControllers.Doctor;
 
+import FxmlControllers.AppointmentUI_controller;
+import FxmlControllers.SettingUI_controller;
 import FxmlControllers.SwitchScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,11 +46,11 @@ public class DoctorUserUI_controller implements Initializable {
     }
 
     public void appointments(ActionEvent e) throws IOException {
-        loadingContent("/UI/AppointmentUI.fxml");
+        appintment("/UI/DoctorUI/AppointmentUI.fxml",usernameLabel.getText());
     }
 
     public void settings(ActionEvent e) throws IOException {
-        loadingContent("/UI/SettingUI.fxml");
+        loadingContent("/UI/SettingUI.fxml",usernameLabel.getText());
     }
 
     public void logout(ActionEvent e) throws IOException {
@@ -79,6 +81,48 @@ public class DoctorUserUI_controller implements Initializable {
             AnchorPane.setLeftAnchor(pane,0.0);
             AnchorPane.setRightAnchor(pane,0.0);
         } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void loadingContent(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+            SettingUI_controller controller = loader.getController();
+            controller.setUsername(username);
+            controller.setAll();
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void appintment(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+            DoctorAppointment_controller controller = loader.getController();
+            controller.setUsername(username);
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -41,11 +41,11 @@
                                 <Font name="FreeSans" size="14.0" />
                             </font>
                         </Label>
-                  <VBox fx:id="overviewField" layoutX="12.0" layoutY="167.0" prefHeight="345.0" prefWidth="395.0" style="visibility: false;">
+                  <VBox fx:id="overviewField" layoutX="12.0" layoutY="167.0" prefHeight="345.0" prefWidth="395.0" style="visibility: true;">
                      <children>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="108.0" text="  Name" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="Name" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -59,7 +59,7 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="108.0" text="  Age" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="Email" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -73,7 +73,7 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="67.0" prefWidth="108.0" text="  Gender" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="Gender" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -87,40 +87,12 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>
-                              <Label prefHeight="50.0" prefWidth="108.0" text="  Experience" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="overviewExperience" prefHeight="50.0" prefWidth="267.0" text="  Name" textFill="WHITE">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="50.0" prefWidth="395.0">
-                           <children>
-                              <Label prefHeight="67.0" prefWidth="108.0" text="  Contact" textFill="WHITE">
+                              <Label prefHeight="67.0" prefWidth="108.0" text="Contact" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="overviewContact" prefHeight="50.0" prefWidth="267.0" text="  Name" textFill="WHITE">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="50.0" prefWidth="395.0">
-                           <children>
-                              <Label prefHeight="67.0" prefWidth="108.0" text="  Speciality" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="overviewSpeciality" prefHeight="50.0" prefWidth="278.0" text="  Name" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

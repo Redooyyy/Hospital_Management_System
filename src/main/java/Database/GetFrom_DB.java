@@ -1,5 +1,6 @@
 package Database;
 
+import java.sql.*;
 import java.time.LocalDate;
 
 /**
@@ -33,11 +34,24 @@ public class GetFrom_DB {
         Pass_me_query query = new Pass_me_query("password", "users", "username");
         return query.returnString(username);
     }
-    
+
+    public static String getMobileByUsername(String username){
+        Pass_me_query query = new Pass_me_query("phone", "users", "username");
+        return query.returnString(username);
+    }
+    public static String getGenderByUsername(String username){
+        Pass_me_query query = new Pass_me_query("gender", "users", "username");
+        return query.returnString(username);
+    }
+
     //get password(email)
     public static String getPasswordByEmail(String email){    
         Pass_me_query query = new Pass_me_query("password", "users", "email");
         return query.returnString(email);
+    }
+    public static String getEmailByUsername(String username){
+        Pass_me_query query = new Pass_me_query("email","users","username");
+        return query.returnString(username);
     }
     //get fullName by email
    public  static  String getFullNameByEmail(String email){
@@ -70,6 +84,16 @@ public class GetFrom_DB {
         return query.returnDouble(name);
     }
 
+    public static double getDue(int name){
+        Pass_me_query query= new Pass_me_query("have_to_pay","patients","user_id");
+        return query.returnDouble(name);
+    }
+
+    public static double getSallary(int id){
+        Pass_me_query query= new Pass_me_query("amount","salaries","user_id");
+        return query.returnDouble(id);
+    }
+
     public static int getMedStock(String name){
         Pass_me_query query= new Pass_me_query("stock_quantity","medicines","name");
         return query.returnInt(name);
@@ -80,5 +104,30 @@ public class GetFrom_DB {
         query.Pass_me_queryDate("medicineMoney","moneyCalculate","clocky");
         return query.returnDouble(date);
     }
+
+
+    //special cases
+    public static Timestamp getUserTimestamp(String username) {
+        Timestamp timestamp = null;
+
+        String query = "SELECT created_at FROM users WHERE username = ?";
+
+        try (Connection conn = DB_connect.getConnect();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);  // bind the username
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                timestamp = rs.getTimestamp("created_at");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return timestamp;
+    }
+
 
 }

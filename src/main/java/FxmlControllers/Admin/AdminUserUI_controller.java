@@ -1,5 +1,8 @@
 package FxmlControllers.Admin;
 
+import Database.GetFrom_DB;
+import FxmlControllers.NotificationUI_controller;
+import FxmlControllers.SettingUI_controller;
 import FxmlControllers.SwitchScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -45,19 +48,20 @@ public class AdminUserUI_controller implements Initializable {
     public void profile(ActionEvent e){}
 
     public void notifications(ActionEvent e) throws IOException {
-    loadingContent("/UI/NotificationUI.fxml");
+    notify("/UI/NotificationUI.fxml",usernameLabel.getText());
     }
 
     public void doctors(ActionEvent e) throws IOException {
-        loadingContent("/UI/DoctorsUI.fxml");
+        loadingContent("/UI/DoctorUI/Staffs.fxml");
     }
 
     public void appointments(ActionEvent e) throws IOException {
-        loadingContent("/UI/AppointmentUI.fxml");
+        loadingContent("/UI/DoctorUI/PatientsSee.fxml");
     }
 
     public void settings(ActionEvent e) throws IOException {
-        loadingContent("/UI/SettingUI.fxml");
+        loadingContent("/UI/SettingUI.fxml",usernameLabel.getText());
+
     }
 
     public void logout(ActionEvent e) throws IOException {
@@ -69,6 +73,7 @@ public class AdminUserUI_controller implements Initializable {
 @Override
 public void initialize(URL location, ResourceBundle resources) {
 
+    System.out.println(usernameLabel.getText());
     Platform.runLater(() -> {
         try {
             passUsername();
@@ -123,6 +128,48 @@ public <T> T loadingContent(String fxmlPath) {
         }
     }
 
+    private void loadingContent(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+            SettingUI_controller controller = loader.getController();
+            controller.setUsername(username);
+            controller.setAll();
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void notify(String fxmlPath, String username) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            AnchorPane pane = loader.load();
+            NotificationUI_controller controller = loader.getController();
+            controller.setUserID(GetFrom_DB.getUserID(username));
+            controller.loadData();
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(pane);
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
