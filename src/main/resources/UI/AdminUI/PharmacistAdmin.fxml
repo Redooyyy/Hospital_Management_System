@@ -8,26 +8,31 @@
     <children>
         <AnchorPane prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;">
          <children>
-              <AnchorPane layoutX="230.0" layoutY="13.0" prefHeight="44.0" prefWidth="664.0" style="-fx-background-color: #2A3A4B; -fx-background-radius: 18;" AnchorPane.rightAnchor="280.0">
+              <AnchorPane layoutX="141.0" layoutY="71.0" prefHeight="597.0" prefWidth="893.0" style="-fx-background-color: #2A3A4B; -fx-background-radius: 18;" AnchorPane.rightAnchor="140.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handOver" prefHeight="44.0" prefWidth="192.0" style="-fx-background-radius: 18;" text="HandOver" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button layoutX="24.0" mnemonicParsing="false" onAction="#handOver" prefHeight="628.0" prefWidth="184.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="HandOver" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="236.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="192.0" style="-fx-background-radius: 18;" text="CheckStock">
+                  <Button layoutX="243.0" mnemonicParsing="false" prefHeight="628.0" prefWidth="184.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="CheckStock" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="470.0" layoutY="1.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="192.0" style="-fx-background-radius: 18;" text="Add Medicine">
+                  <Button layoutX="470.0" layoutY="1.0" mnemonicParsing="false" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Add Medicine" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="687.0" layoutY="1.0" mnemonicParsing="false" prefHeight="627.0" prefWidth="176.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" text="Check Sell" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contentPane" layoutX="174.0" layoutY="140.0" prefHeight="667.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <AnchorPane fx:id="contentPane" layoutX="174.0" layoutY="140.0" prefHeight="52.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
     </children>
 </AnchorPane>

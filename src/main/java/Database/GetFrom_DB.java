@@ -1,4 +1,7 @@
 package Database;
+
+import java.time.LocalDate;
+
 /**
  *
  * @author Reo
@@ -70,6 +73,12 @@ public class GetFrom_DB {
     public static int getMedStock(String name){
         Pass_me_query query= new Pass_me_query("stock_quantity","medicines","name");
         return query.returnInt(name);
+    }
+
+    public static double getMedRev(LocalDate date){
+        Pass_me_query query = new Pass_me_query();
+        query.Pass_me_queryDate("medicineMoney","moneyCalculate","clocky");
+        return query.returnDouble(date);
     }
 
 }

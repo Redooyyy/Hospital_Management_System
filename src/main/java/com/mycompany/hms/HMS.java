@@ -33,7 +33,7 @@ public class HMS extends Application{
         UserServices services = new UserServices();
         services.changeUserRole("rayan",UserRole.ADMIN,"rayan");
             //Group root = new Group();
-        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/Pharmacist/HandOverUI.fxml")));
+        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/UI/Pharmacist/PharmacistUserUI.fxml")));
         Scene scene = new Scene(root1);
         //login page can't be resizable
         //primaryStage.initStyle(StageStyle.TRANSPARENT);

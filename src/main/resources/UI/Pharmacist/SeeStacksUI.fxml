@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Pharmacist.SeeStocks_controller">
+    <children>
+        <AnchorPane prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;">
+         <children>
+            <TableView fx:id="medicineTable" layoutX="44.0" layoutY="117.0" prefHeight="599.0" prefWidth="1086.0" style="-fx-background-color: #1E2A38;" styleClass="st" stylesheets="@style.css">
+              <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="471.0" text="Name" />
+                <TableColumn fx:id="stockColumn" minWidth="0.0" prefWidth="293.0" text="Stocks" />
+                  <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="320.0" text="Price per piece" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children></AnchorPane>
+    </children>
+</AnchorPane>

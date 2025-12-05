@@ -4,11 +4,23 @@ import Database.GetFrom_DB;
 import Database.Update_DB;
 
 public class Medicine {
-    String name;
-    double price;
-    int stock;
+    private String name;
+    private double price;
+    private int stock;
 
-    Medicine(String name, double price, int stock) {
+    public double getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public Medicine(String name, int stock, double price) {
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -21,5 +33,9 @@ public class Medicine {
             Update_DB.updateStock(medicine, newStock);
             return true;
         }
+    }
+
+    public void addMedicine(){
+        Update_DB.addMed(this.name, this.stock, this.price);
     }
 }

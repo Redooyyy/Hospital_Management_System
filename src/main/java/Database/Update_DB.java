@@ -2,6 +2,8 @@ package Database;
 
 import Roles.UserRole;
 
+import java.time.LocalDate;
+
 public class Update_DB {
 
     //role update
@@ -24,7 +26,27 @@ public class Update_DB {
         query.updateDB("medicines","stock_quantity","name");
         query.update(Medicine,stock);
     }
+    public static void updateMedPrice(String Medicine, double price){
+        //update db
+        Pass_me_query query = new Pass_me_query();
+        query.updateDB("medicines","price","name");
+        query.update(Medicine,price);
+    }
+    public static void addMed(String medName,int stock, double price){
+        MedicineAdd.addMed(medName,"",stock,price);
+    }
 
+
+    public static void medRev(double price){
+        LocalDate date = LocalDate.now();
+        if(GetFrom_DB.getMedRev(date) == 0){
+            newRevMed.addMed(price);
+        } else{
+            Pass_me_query query = new Pass_me_query();
+            query.updateDBDate("moneyCalculate","medicineMoney","clocky");
+            query.update(GetFrom_DB.getMedRev(date)+price,date);
+        }
+    }
     public static void updateRQ(boolean accept){
         //update DB
     }

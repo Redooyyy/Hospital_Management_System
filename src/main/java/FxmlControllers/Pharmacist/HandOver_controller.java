@@ -165,6 +165,8 @@ public class HandOver_controller implements Initializable {
             for(int i = 0;i<x;i++){
                 if(Medicine.removeFromStock(medListNm.getItems().get(i),medListQn.getItems().get(i))){
                     System.out.println("all Okay");
+                    String price = total.getText().substring(0,total.getText().indexOf(" "));
+                    Update_DB.medRev(Double.parseDouble(price));
                 } else {
                     errorText.setText("Medicine is out of stock");
                 }

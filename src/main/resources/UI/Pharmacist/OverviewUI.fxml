@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Admin.OverviewUI_controller">
+<AnchorPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxmlControllers.Pharmacist.OverviewUI_controller">
    <children>
       <AnchorPane prefHeight="731.0" prefWidth="1174.0" style="-fx-background-color: #1E2A38; -fx-background-radius: 18;">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <AnchorPane layoutX="13.0" layoutY="120.0" prefHeight="197.0" prefWidth="348.0" style="-fx-background-color: #2F4050; -fx-background-radius: 18;">
                      <children>
-                        <Label fx:id="upcomingAppointmentLabel" alignment="CENTER" layoutX="8.0" layoutY="28.0" prefHeight="153.0" prefWidth="335.0" text="no sell" textAlignment="CENTER" textFill="#686464" wrapText="true">
+                        <Label fx:id="todaysSell" alignment="CENTER" layoutX="8.0" layoutY="28.0" prefHeight="153.0" prefWidth="335.0" text="no sell" textAlignment="CENTER" textFill="#686464" wrapText="true">
                            <font>
                               <Font name="FreeSans" size="13.0" />
                            </font>
@@ -110,7 +110,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="dueLabel" alignment="CENTER" layoutX="107.0" layoutY="51.0" prefHeight="49.0" prefWidth="112.0" text="0.00" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
+                        <Label fx:id="totalSell" alignment="CENTER" layoutX="107.0" layoutY="51.0" prefHeight="49.0" prefWidth="112.0" text="0.00" textAlignment="CENTER" textFill="#fff7f7" wrapText="true">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -130,7 +130,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="entireAmmountLabel" layoutX="188.0" layoutY="154.0" prefHeight="29.0" prefWidth="91.0" text="0.00" textFill="#fff7f7">
+                        <Label fx:id="avarageSell" layoutX="188.0" layoutY="154.0" prefHeight="29.0" prefWidth="91.0" text="0.00" textFill="#fff7f7">
                            <font>
                               <Font size="20.0" />
                            </font>

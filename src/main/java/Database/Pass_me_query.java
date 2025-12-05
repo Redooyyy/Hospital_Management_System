@@ -1,9 +1,11 @@
 package Database;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 public class Pass_me_query {
@@ -18,10 +20,22 @@ public class Pass_me_query {
         this.query = "SELECT " + target + " FROM " + whichTable + " WHERE " + whichRow + " = ?";
     }
 
+    public void Pass_me_queryDate(String target, String whichTable, String whichRow) {
+        this.target = target;
+        //syntax example = "SELECT role_id FROM users WHERE user_id = ?";
+        this.query = "SELECT " + target + " FROM " + whichTable + " WHERE DATE("+whichRow+")" + " = ?";
+    }
+
     public void updateDB(String target, String whichCell, String whichRow) {
         this.target = target;
         //syntax example = "UPDATE users SET role = ? WHERE username = ?";
         this.query = "UPDATE " + target + " SET " + whichCell + " = ? WHERE " + whichRow + " = ?";
+    }
+
+    public void updateDBDate(String target, String whichCell, String whichRow) {
+        this.target = target;
+        //syntax example = "UPDATE users SET role = ? WHERE username = ?";
+        this.query = "UPDATE " + target + " SET " + whichCell + " = ? WHERE DATE(" + whichRow + ") = ?";
     }
 
 
@@ -82,7 +96,22 @@ public class Pass_me_query {
         return 0;
     }
 
-       
+    public double returnDouble(LocalDate date){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setDate(1, java.sql.Date.valueOf(date));
+
+            try(ResultSet result = statement.executeQuery()) {
+                return result.next()?result.getDouble(target) : 0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
        //for username,fullname,password (by passing a int)
        public String returnString(int anyID){
         try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query)) {
@@ -157,6 +186,26 @@ public class Pass_me_query {
         try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
             statement.setInt(1,id);
             statement.setString(2,updated);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void update(String updated,double price){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
+            statement.setDouble(1,price);
+            statement.setString(2,updated);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void update(double price,LocalDate date){
+        try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(query) ) {
+            statement.setDouble(1,price);
+            statement.setDate(2,java.sql.Date.valueOf(date));
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

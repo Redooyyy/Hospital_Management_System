@@ -1,0 +1,19 @@
+.table-view {
+    -fx-background-color: #1E2A38;
+    -fx-control-inner-background: #1E2A38;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 5;
+    -fx-font-size: 15px;
+}
+
+.table-row-cell {
+    -fx-background-color: #1E2A38;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.table-column-header {
+    -fx-background-color: #1E2A38;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}

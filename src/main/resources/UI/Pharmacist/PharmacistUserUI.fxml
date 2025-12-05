@@ -49,7 +49,12 @@
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="2.0" layoutY="441.0" mnemonicParsing="false" onAction="#settings" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Settings" textFill="#e0e0e0">
+      <Button layoutX="2.0" layoutY="441.0" mnemonicParsing="false" onAction="#addStock" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Add Stock" textFill="#e0e0e0">
+         <font>
+            <Font name="FreeSans" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutY="505.0" mnemonicParsing="false" onAction="#settings" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Settings" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>
