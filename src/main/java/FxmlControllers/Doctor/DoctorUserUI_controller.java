@@ -42,7 +42,7 @@ public class DoctorUserUI_controller implements Initializable {
     }
 
     public void doctors(ActionEvent e) throws IOException {
-        loadingContent("/UI/DoctorsUI.fxml");
+        appintment("/UI/DoctorUI/DoctorsUI.fxml",usernameLabel.getText());
     }
 
     public void appointments(ActionEvent e) throws IOException {
@@ -111,7 +111,7 @@ public class DoctorUserUI_controller implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             AnchorPane pane = loader.load();
-            DoctorAppointment_controller controller = loader.getController();
+            Accepted controller = loader.getController();
             controller.setUsername(username);
             System.out.println(username);
             controller.loadData();

@@ -39,12 +39,12 @@
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="1.0" layoutY="323.0" mnemonicParsing="false" onAction="#doctors" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Doctors" textFill="#e0e0e0">
+      <Button layoutX="1.0" layoutY="323.0" mnemonicParsing="false" onAction="#doctors" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Upcoming Appointmetn" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>
       </Button>
-      <Button layoutY="381.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Appointments" textFill="#e0e0e0">
+      <Button layoutY="381.0" mnemonicParsing="false" onAction="#appointments" prefHeight="47.0" prefWidth="206.0" style="-fx-background-radius: 18; -fx-background-color: #2F4050;" text="Appointment RQ" textFill="#e0e0e0">
          <font>
             <Font name="FreeSans" size="16.0" />
          </font>

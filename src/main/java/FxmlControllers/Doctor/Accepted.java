@@ -1,7 +1,9 @@
 package FxmlControllers.Doctor;
 
-import Database.*;
-import javafx.event.ActionEvent;
+import Database.DB_connect;
+import Database.GetFrom_DB;
+import Database.NotificationAdd;
+import Database.Update_DB;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -13,7 +15,6 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -21,12 +22,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
-import java.sql.*;
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DoctorAppointment_controller implements Initializable {
+public class Accepted implements Initializable {
     @FXML
     private VBox doctorsVbox;
     @FXML
@@ -163,10 +165,11 @@ public class DoctorAppointment_controller implements Initializable {
             NotificationAdd.addSallary(GetFrom_DB.getUserID(patient),(acceptTitile),("Dear "+GetFrom_DB.getFullNameByUsername(patient)+acceptTxt)+GetFrom_DB.getFullNameByUsername(username));
             Update_DB.acceptedAppointment(GetFrom_DB.getUserID(username),rqID);
             doctorsVbox.getChildren().remove(notificationCard);
+            Update_DB.deleteAppointment(rqID);
         });
 
         Button cancel = new Button();
-        cancel.setText("Cancel");
+        cancel.setText("DONE");
         cancel.setStyle("-fx-background-color: red;"+"-fx-background-radius: 18;"+"-fx-font-size: 14;"+"-fx-font-family: FreeSans;"+"-fx-text-fill: white;"+"-fx-font-weight: bold");
         cancel.setPrefHeight(30);
         cancel.setPrefWidth(85);
@@ -175,8 +178,8 @@ public class DoctorAppointment_controller implements Initializable {
         cancel.setOnAction(event -> {
             //cancel request
             doctorsVbox.getChildren().remove(notificationCard);
-            Update_DB.deleteAppointment(rqID);
-            NotificationAdd.addSallary(GetFrom_DB.getUserID(patient),(cancelTitle),("Dear "+GetFrom_DB.getFullNameByUsername(patient)+cancelTxt)+GetFrom_DB.getFullNameByUsername(username));
+
+
         });
 
         //clear Button
@@ -192,7 +195,7 @@ public class DoctorAppointment_controller implements Initializable {
 
 
         //adding all element to ->anchorPane ->Vbox
-        notificationCard.getChildren().addAll(imageView,mainNotification,accept,cancel,view);
+        notificationCard.getChildren().addAll(imageView,mainNotification,cancel,view);
         doctorsVbox.getChildren().add(index,notificationCard);
         VBox.setMargin(notificationCard,new Insets(4,10,13,10));
 
@@ -200,7 +203,7 @@ public class DoctorAppointment_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // setDoctor("Mim akter",2,0,"mimakter");
+        // setDoctor("Mim akter",2,0,"mimakter");
         defauilt();
         //loadData();
     }
@@ -252,7 +255,7 @@ public class DoctorAppointment_controller implements Initializable {
             int indx = 0;
             System.out.println(GetFrom_DB.getUserID(username));
             while (rs.next()) {
-                if(rs.getInt("doctor_id") == GetFrom_DB.getUserID(username) && !rs.getBoolean("is_approved")){
+                if(rs.getInt("doctor_id") == GetFrom_DB.getUserID(username) && rs.getBoolean("is_approved")){
                     System.out.println(GetFrom_DB.getUserID(username));
                     patientUserName = GetFrom_DB.getUserNameByUserID(rs.getInt("patient_id"));
                     System.out.println(patientUserName);
@@ -268,3 +271,4 @@ public class DoctorAppointment_controller implements Initializable {
         }
     }
 }
+

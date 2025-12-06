@@ -8,7 +8,7 @@ public class NotificationAdd {
 
     public static void addSallary(int user_id, String title, String message){
 
-        String sql = "INSERT INTO salaries (user_id, notification_title, notification_msg) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO notification (user_id, notification_title, notification_msg) VALUES (?, ?, ?)";
         try(Connection connection = DB_connect.getConnect(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, user_id);
             statement.setString(2, title);
