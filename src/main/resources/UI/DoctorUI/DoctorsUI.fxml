@@ -41,7 +41,7 @@
                                 <Font name="FreeSans" size="14.0" />
                             </font>
                         </Label>
-                  <VBox fx:id="overviewField" layoutX="12.0" layoutY="167.0" prefHeight="345.0" prefWidth="395.0" style="visibility: true;">
+                  <VBox fx:id="overviewField" layoutX="12.0" layoutY="167.0" prefHeight="345.0" prefWidth="395.0" style="visibility: false;">
                      <children>
                         <HBox prefHeight="50.0" prefWidth="395.0">
                            <children>

@@ -32,7 +32,7 @@ public class DoctorUserUI_controller implements Initializable {
     }
 
     public void overview(ActionEvent e) throws IOException {
-        loadingContent("/UI/AdminUI/OverviewUI.fxml");
+        loadingContent("/UI/DoctorUI/OverviewUI.fxml");
     }
 
     public void profile(ActionEvent e){}

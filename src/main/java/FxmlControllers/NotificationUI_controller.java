@@ -101,7 +101,7 @@ public class NotificationUI_controller implements Initializable {
         subNotification.prefHeight(27);
         subNotification.setLayoutY(32);
         subNotification.setLayoutX(22);
-        subNotification.setText("        "+subMassage);
+        subNotification.setText("        "+subMassage.substring(0,subMassage.indexOf(" "))+"......");
 
         Label timeOfNotification = new Label();
         timeOfNotification.setTextFill(Color.web("#8a7f7f"));
