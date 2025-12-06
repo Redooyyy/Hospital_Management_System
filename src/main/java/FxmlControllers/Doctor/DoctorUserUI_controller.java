@@ -113,6 +113,8 @@ public class DoctorUserUI_controller implements Initializable {
             AnchorPane pane = loader.load();
             DoctorAppointment_controller controller = loader.getController();
             controller.setUsername(username);
+            System.out.println(username);
+            controller.loadData();
 
             contentPane.getChildren().clear();
             contentPane.getChildren().add(pane);

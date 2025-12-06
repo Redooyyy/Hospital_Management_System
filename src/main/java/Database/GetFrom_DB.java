@@ -73,6 +73,11 @@ public class GetFrom_DB {
         Pass_me_query query = new Pass_me_query("username","users","email");
         return query.returnString(email);
     }
+
+    public static  String getUserNameByUserID(int id){
+        Pass_me_query query = new Pass_me_query("username","users","user_id");
+        return query.returnString(id);
+    }
     //get tips by unique id
     public static String getTips(int slNum){
         Pass_me_query query =new Pass_me_query("tips","health_tips","tips_id");

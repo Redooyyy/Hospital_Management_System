@@ -32,6 +32,15 @@ public class Pass_me_query {
         this.query = "UPDATE " + target + " SET " + whichCell + " = ? WHERE " + whichRow + " = ?";
     }
 
+    /*DELETE FROM table_name
+    WHERE id = 123;
+    */
+    public void delete(String target, String whichCell, String whichRow) {
+        this.target = target;
+        //syntax example = "UPDATE users SET role = ? WHERE username = ?";
+        this.query = "DELETE " +"FROM " + target + " = ? WHERE " + whichRow + " = ?";
+    }
+
     public void updateDBDate(String target, String whichCell, String whichRow) {
         this.target = target;
         //syntax example = "UPDATE users SET role = ? WHERE username = ?";

@@ -1,8 +1,6 @@
 package FxmlControllers.Doctor;
 
-import Database.AddRequest;
-import Database.DB_connect;
-import Database.GetFrom_DB;
+import Database.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,11 +60,31 @@ public class DoctorAppointment_controller implements Initializable {
     private AnchorPane selected;
     private String username;
 
+    private final String cancelTitle = "Canceled Appointment request";
+    private final String cancelTxt = " ,\n" +
+            "\n" +
+            "I regret to inform you that I must cancel your scheduled appointment.  \n" +
+            "The cancellation is due to unforeseen circumstances that require my immediate attention.  \n" +
+            "\n" +
+            "I sincerely apologize for any inconvenience this may cause. Please contact the clinic to arrange a new appointment at a time that is convenient for you.  \n" +
+            "\n" +
+            "Dr.";
+
+    private final String acceptTitile = "Accepted Request";
+    private final String acceptTxt = " ,\n" +
+            "\n" +
+            "I am pleased to confirm your appointment request.  \n" +
+            "Your appointment has been scheduled for tomorrow at [Clinic Address].  \n" +
+            "\n" +
+            "We look forward to seeing you then. Hope your illness will be cured \n" +
+            "\n" +
+            "Dr. " ;
+
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setDoctor(String mainMessage, String subMassage, int index,String patient){
+    public void setDoctor(String mainMessage, int rqID, int index,String patient){
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -141,6 +159,9 @@ public class DoctorAppointment_controller implements Initializable {
         accept.setOnAction(event -> {
             System.out.println(username);
             //accept request
+            NotificationAdd.addSallary(GetFrom_DB.getUserID(patient),(acceptTitile),("Dear "+GetFrom_DB.getFullNameByUsername(patient)+acceptTxt)+GetFrom_DB.getFullNameByUsername(username));
+            Update_DB.acceptedAppointment(GetFrom_DB.getUserID(username),rqID);
+            doctorsVbox.getChildren().remove(notificationCard);
         });
 
         Button cancel = new Button();
@@ -152,6 +173,9 @@ public class DoctorAppointment_controller implements Initializable {
         cancel.setLayoutY(18);
         cancel.setOnAction(event -> {
             //cancel request
+            doctorsVbox.getChildren().remove(notificationCard);
+            Update_DB.deleteAppointment(rqID);
+            NotificationAdd.addSallary(GetFrom_DB.getUserID(patient),(cancelTitle),("Dear "+GetFrom_DB.getFullNameByUsername(patient)+cancelTxt)+GetFrom_DB.getFullNameByUsername(username));
         });
 
         //clear Button
@@ -162,7 +186,7 @@ public class DoctorAppointment_controller implements Initializable {
         view.setPrefWidth(60);
         view.setLayoutX(633);
         view.setLayoutY(18);
-        view.setOnAction(event -> viewDetail(subMassage));
+        view.setOnAction(event -> viewDetail(username));
 
 
 
@@ -175,8 +199,9 @@ public class DoctorAppointment_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadData();
+       // setDoctor("Mim akter",2,0,"mimakter");
         defauilt();
+        //loadData();
     }
 
 
@@ -217,23 +242,25 @@ public class DoctorAppointment_controller implements Initializable {
     }
 
 
-    private void loadData() {
-        String sql = "SELECT full_name, username, role_id FROM users";
-
+    public void loadData() {
+        String sql = "SELECT doctor_id, patient_id, request_id FROM appointment_request";
+        System.out.println("Hello");
         try (Connection connection = DB_connect.getConnect();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet rs = statement.executeQuery()) {
-
             int indx = 0;
-
+            System.out.println(GetFrom_DB.getUserID(username));
             while (rs.next()) {
-                if(rs.getInt("role_id") == 3){
-                  //  setDoctor(rs.getString("full_name"),rs.getString("username"),indx);
+                if(rs.getInt("doctor_id") == GetFrom_DB.getUserID(username)){
+                    System.out.println(GetFrom_DB.getUserID(username));
+                    String patientUserName = GetFrom_DB.getUserNameByUserID(rs.getInt("patient_id"));
+                    System.out.println(patientUserName);
+                    setDoctor(GetFrom_DB.getFullNameByUsername(patientUserName),rs.getInt("request_id"),indx,patientUserName);
+                    System.out.println(rs.getString("full_name"));
                     //see request list
                     indx++;
                 }
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();

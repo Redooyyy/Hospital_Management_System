@@ -58,26 +58,38 @@ public class Update_DB {
     //update password
     public static void updatePass(String username, String pass){
         Pass_me_query query = new Pass_me_query();
-        query.updateDBDate("password","users","username");
+        query.updateDB("password","users","username");
         query.update(pass,username);
     }
     //update mobile-number
     public static void updateMobileNumber(String username, String number){
         Pass_me_query query = new Pass_me_query();
-        query.updateDBDate("phone","users","username");
+        query.updateDB("phone","users","username");
         query.update(number,username);
     }
     //update fullname
     public static void updateFullName(String name,String username){
         Pass_me_query query = new Pass_me_query();
-        query.updateDBDate("full_name","users","username");
+        query.updateDB("full_name","users","username");
         query.update(name,username);
     }
 
     public static void updateSallary(double salary,String username){
         Pass_me_query query = new Pass_me_query();
-        query.updateDBDate("amount","salaries","user_id");
+        query.updateDB("amount","salaries","user_id");
         query.update(username,salary);
+    }
+
+    public static void acceptedAppointment(int doctorId, int request){
+        Pass_me_query query = new Pass_me_query();
+        query.updateDB("appointment_request","is_approved","request_id");
+        query.update(doctorId,request);
+    }
+
+    public static void deleteAppointment(int id){
+        Pass_me_query query = new Pass_me_query();
+        query.delete("appointment_request","","request_id");
+        query.update(id,id);
     }
 
 }

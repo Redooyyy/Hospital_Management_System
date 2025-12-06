@@ -49,7 +49,7 @@ public class AppointmentUI_controller implements Initializable {
     public static AppointmentUI_controller appointmentUIController; //for assigning the current controller
 
 
-    public void setDoctor(String mainMessage, String subMassage, int index) {
+    public void setDoctor(String mainMessage, String subMassage, int index,String docUser) {
         //hiding scroll bar (Another think that I had to search for so long to make ui look good -_-)
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -137,7 +137,9 @@ public class AppointmentUI_controller implements Initializable {
         appointment.setOnAction(event -> {
             try {
                 openedRq();
+                doc = docUser;
                 appoint("/UI/AppointmentRequestFormUI.fxml",username);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -243,8 +245,8 @@ public class AppointmentUI_controller implements Initializable {
 
             while (rs.next()) {
                 if(rs.getInt("role_id") == 3){
-                    doc = rs.getString("username");
-                    setDoctor(rs.getString("full_name"),doc,indx);
+
+                    setDoctor(rs.getString("full_name"),"",indx,rs.getString("username"));
                     indx++;
                 }
             }

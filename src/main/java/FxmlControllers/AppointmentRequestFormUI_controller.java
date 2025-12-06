@@ -44,6 +44,8 @@ public class AppointmentRequestFormUI_controller implements Initializable {
 
         //add to DB (update request column)
         AddRequest.addAppointmentRequest(GetFrom_DB.getUserID(username),GetFrom_DB.getUserID(docUser));
+        System.out.println(username);
+        System.out.println(docUser);
     }
 
     public void cancelBtn() throws IOException {
